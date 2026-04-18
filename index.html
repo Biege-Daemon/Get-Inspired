@@ -20,7 +20,6 @@ img{display:block;max-width:100%;}
 .ann-bar p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#fff;text-transform:uppercase;letter-spacing:2px;line-height:24px;padding:0 40px;}
 
 /* ── HEADER ── */
-/* Logo PNG already contains "GET INSPIRED / LIVE YOUR DREAMS" text baked in */
 .site-header{background:#fff;text-align:center;padding:88px 0 0;}
 .logo-link{display:inline-block;}
 .logo-img{width:192px;height:192px;object-fit:contain;margin:0 auto;}
@@ -30,25 +29,19 @@ img{display:block;max-width:100%;}
 .site-nav li a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2.996px;line-height:24px;display:inline-block;padding:18px 0 16px;border-bottom:2px solid transparent;margin-bottom:-2px;transition:border-color 0.15s;}
 .site-nav li a.active,.site-nav li a:hover{border-bottom-color:#4C3B37;}
 
-/* ── HERO ──
-   Original: section bg white, inner max-w ~1200 centered
-   Left col: 548/1200 = 45.6%, image 548x400, right fills remaining width
-   Right col: bg #F6F3F2, vertically centered text */
+/* ── HERO — FIX #3: image keeps natural width, right col fills remaining space ── */
 .hero-section{background:#fff;}
-.hero-inner{max-width:1200px;margin:0 auto;padding: 60px 40px;display:flex;align-items:stretch;}
-.hero-img-col{flex:0 0 57%;overflow:hidden;background:#111;min-height:480px;}
-.hero-img-col img{width:100%;height:100%;object-fit:fill;display:block;min-height:480px;}
-.hero-text-col{flex:1;background:#F6F3F2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 44px;text-align:center;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:60px 40px;display:flex;align-items:stretch;}
+.hero-img-col{flex:0 0 auto;overflow:hidden;background:#111;min-height:480px;max-height:540px;}
+.hero-img-col img{width:auto;height:100%;min-height:480px;max-height:540px;object-fit:cover;display:block;}
+.hero-text-col{flex:1;background:#F6F3F2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 44px;max-height:540px;text-align:center;}
 .hero-text-col h1{font-family:'Fjalla One',arial,sans-serif;font-size:44px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:1.012px;line-height:52.8px;margin-bottom:20px;}
 .hero-subtext{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#575757;line-height:1.6;margin-bottom:2px;}
 .hero-mag-name{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#575757;line-height:1.6;margin-bottom:32px;}
 .btn-subscribe{display:inline-flex;align-items:center;justify-content:center;background:#4C3B37;color:#fff;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:2.996px;padding:8px 32px;min-width:216px;height:56px;border:none;cursor:pointer;transition:opacity 0.2s;}
 .btn-subscribe:hover{opacity:0.88;color:#fff;}
 
-/* ── QUOTE SECTION ──
-   bg #161616, min-h 273px, centered column
-   SVG icon: 48x48 color rgb(64,64,64) mb 24px
-   h2: Fjalla One 30px fw400 uppercase ls 0.93px lh 37.5px color #F7F7F7 */
+/* ── QUOTE SECTION ── */
 .quote-section{background:#161616;padding:40px 20px;text-align:center;min-height:273px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .quote-icon{color:rgb(64,64,64);margin-bottom:24px;flex-shrink:0;}
 .quote-section h2{font-family:'Fjalla One',arial,sans-serif;font-size:30px;font-weight:400;color:#F7F7F7;text-transform:uppercase;letter-spacing:0.93px;line-height:37.5px;max-width:780px;}
@@ -67,149 +60,36 @@ img{display:block;max-width:100%;}
 .comics-head-section{background:#fff;padding:40px 0;text-align:center;}
 .comics-head-section h2{font-family:'Fjalla One',arial,sans-serif;font-size:30px;font-weight:400;color:#1B1B1B;text-transform:uppercase;letter-spacing:0.93px;line-height:37.5px;}
 
-/* ── COMICS SLIDESHOW ──
-   Measured: UL overflow:hidden 936px wide, LI inline-block
-   Active slide opacity:1, inactive opacity:0.3
-   Center-focused: active slide centered, neighbours peek at sides
-   Subheading: Quicksand 22px uppercase ls 2.75px color #4C3B37 left aligned */
 /* ── COMICS SLIDESHOW ── */
-.comics-slide-section {
-  background: #fff;
-  padding: 40px 0;
-}
+.comics-slide-section{background:#fff;padding:40px 0;}
+.comics-slide-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.comics-subheading{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:400;color:#4C3B37;text-transform:uppercase;letter-spacing:2.75px;line-height:30.8px;margin-bottom:20px;}
+.comics-carousel{position:relative;}
+.comics-viewport{overflow:hidden;width:100%;display:flex;justify-content:center;}
+.comics-track{display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
+.comics-slide{flex:0 0 auto;padding:0 12px;opacity:0.3;transition:opacity 0.4s;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+.comics-slide.active{opacity:1;pointer-events:auto;}
+.comics-slide img{height:500px;width:auto;display:block;}
+.comics-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.92);border:1px solid rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#4C3B37;z-index:3;transition:background 0.2s;line-height:1;user-select:none;}
+.comics-arrow:hover{background:#F6F3F2;}
+.comics-arrow.prev{left:8px;}
+.comics-arrow.next{right:8px;}
+.comics-thumbs{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+.comics-thumb{width:70px;height:70px;object-fit:cover;cursor:pointer;border:2px solid transparent;opacity:0.55;transition:opacity 0.2s,border-color 0.2s;flex-shrink:0;}
+.comics-thumb.active,.comics-thumb:hover{opacity:1;border-color:#4C3B37;}
 
-.comics-slide-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.comics-subheading {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 22px;
-  font-weight: 400;
-  color: #4C3B37;
-  text-transform: uppercase;
-  letter-spacing: 2.75px;
-  line-height: 30.8px;
-  margin-bottom: 20px;
-}
-
-.comics-carousel {
-  position: relative;
-}
-
-.comics-viewport {
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  justify-content: center; /* 👈 keeps things visually centered */
-}
-
-.comics-track {
-  display: flex;
-  align-items: center;
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-  will-change: transform;
-}
-
-.comics-slide {
-  flex: 0 0 auto;
-  padding: 0 12px;
-  opacity: 0.3;
-  transition: opacity 0.4s;
-  pointer-events: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.comics-slide.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.comics-slide img {
-  height: 500px;     /* 👈 uniform height */
-  width: auto;       /* 👈 natural width */
-  display: block;
-}
-
-/* Arrows */
-.comics-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(0,0,0,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 22px;
-  color: #4C3B37;
-  z-index: 3;
-  transition: background 0.2s;
-  line-height: 1;
-  user-select: none;
-}
-
-.comics-arrow:hover {
-  background: #F6F3F2;
-}
-
-.comics-arrow.prev { left: 8px; }
-.comics-arrow.next { right: 8px; }
-
-/* Thumbs */
-.comics-thumbs {
-  display: flex;
-  gap: 6px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.comics-thumb {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid transparent;
-  opacity: 0.55;
-  transition: opacity 0.2s, border-color 0.2s;
-  flex-shrink: 0;
-}
-
-.comics-thumb.active,
-.comics-thumb:hover {
-  opacity: 1;
-  border-color: #4C3B37;
-}
-
-/* ── LITTLE INSPIRATIONS ──
-   bg #1A1A1A, h2 color #735F5B Quicksand 32px uppercase ls 4px
-   p color rgba(255,255,255,0.45)
-   Filter tabs: active = rgb(143,123,119) fw700, inactive = #F7F7F7 fw400
-   Cards: white bg, image as background-image 300px tall, text below */
+/* ── LITTLE INSPIRATIONS ── */
 .little-section{background:#1A1A1A;padding:40px 0;}
 .little-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
 .little-section h2{font-family:'Quicksand',sans-serif;font-size:32px;font-weight:400;color:#735F5B;text-transform:uppercase;letter-spacing:4px;line-height:44.8px;margin-bottom:12px;}
 .little-sub{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:4px;}
-
-/* Filter tabs */
 .blog-filter-row{display:flex;gap:28px;justify-content:center;padding:24px 0 20px;}
 .blog-filter-btn{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#F7F7F7;background:none;border:none;cursor:pointer;padding:0;transition:color 0.2s;}
 .blog-filter-btn.active{color:rgb(143,123,119);font-weight:700;}
 .blog-filter-btn:hover{color:rgb(143,123,119);}
-
-/* Blog cards grid */
 .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.blog-card{background:#fff;display:block;color:inherit;text-decoration:none;transition:opacity 0.2s;border: 1px solid #fff;}
-.blog-card:hover{opacity:0.93;}
+.blog-card{background:#fff;display:block;color:inherit;text-decoration:none;transition:opacity 0.2s;border:1px solid #fff;}
+.blog-card:hover{opacity:1;box-shadow:0 8px 30px rgba(255,255,255,0.25),0 0 60px rgba(255,255,255,0.15);}
 .blog-card-img{width:100%;height:300px;background-size:cover;background-position:center;background-repeat:no-repeat;}
 .blog-card-body{padding:32px 24px 32px;}
 .blog-meta{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:rgb(89,89,89);margin-bottom:12px;display:flex;gap:8px;align-items:center;}
@@ -217,13 +97,6 @@ img{display:block;max-width:100%;}
 .blog-card h4{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:400;color:rgb(27,27,27);letter-spacing:0.99px;line-height:1.3;margin-bottom:10px;}
 .blog-card p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgb(94,94,94);line-height:1.6;margin-bottom:14px;}
 .blog-card .cont-reading{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgb(76,59,55);}
-.blog-card:hover {
-  opacity: 1; /* override your current fade */
-
-  box-shadow: 
-    0 8px 30px rgba(255,255,255,0.25), /* soft glow */
-    0 0 60px rgba(255,255,255,0.15);   /* ambient glow */
-}
 
 /* ── BONUS DOWNLOADS ── */
 .bonus-section{background:#fff;padding:40px 0;}
@@ -234,21 +107,66 @@ img{display:block;max-width:100%;}
 .bonus-card h4{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:400;color:#F7F7F7;letter-spacing:0.99px;line-height:27.5px;}
 .bonus-card p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.65;}
 
-/* ── SUBSCRIPTION PLANS ── */
+/* ── SUBSCRIPTION PLANS — FIX #4 bullets, #5 tags, #6 uniform, #7 subscribe btn ── */
 .plans-section{background:#4C3B37;padding:40px 0;}
 .plans-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
 .plans-section h2{font-family:'Fjalla One',arial,sans-serif;font-size:28px;font-weight:400;color:#F6F3F2;text-transform:uppercase;letter-spacing:0.93px;text-align:center;margin-bottom:8px;}
 .plans-subtitle{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgba(246,243,242,0.7);text-align:center;margin-bottom:40px;line-height:1.6;}
 .plans-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-.plan-card{padding:0 32px 0 0;border-right:1px solid rgba(246,243,242,0.18);}
+.plan-card{padding:0 32px 0 0;border-right:1px solid rgba(246,243,242,0.18);display:flex;flex-direction:column;}
 .plan-card:last-child{border-right:none;padding-right:0;}
 .plan-card:not(:first-child){padding-left:32px;}
-.plan-card-img{width:100%;height:188px;object-fit:cover;margin-bottom:20px;display:block;}
+.plan-card-img{width:100%;height:188px;object-fit:cover;margin-bottom:16px;display:block;}
+
+/* FIX #5: value tag badges */
+.plan-tag{
+  display:inline-block;
+  font-family:'Quicksand',sans-serif;
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.4px;
+  padding:4px 10px;border-radius:20px;
+  margin-bottom:12px;align-self:flex-start;
+}
+.plan-tag.tag-starter{background:rgba(246,243,242,0.14);color:rgba(246,243,242,0.8);}
+.plan-tag.tag-growth{background:rgba(100,200,130,0.22);color:rgb(130,220,155);}
+.plan-tag.tag-value{background:rgba(255,200,70,0.22);color:rgb(255,215,90);}
+.plan-tag.tag-best{background:rgba(255,130,50,0.28);color:rgb(255,165,85);}
+
 .plan-name-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;}
 .plan-name{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:400;color:#F6F3F2;letter-spacing:0.99px;}
 .plan-price{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:700;color:#F6F3F2;}
-.plan-desc{font-family:'Quicksand',sans-serif;font-size:15px;font-weight:400;color:rgba(246,243,242,0.72);line-height:1.6;margin-bottom:6px;}
-.plan-tax{font-family:'Quicksand',sans-serif;font-size:12px;font-weight:400;color:rgba(246,243,242,0.45);font-style:italic;}
+
+/* FIX #4: feature bullet list */
+.plan-features{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:7px;
+  flex:1;
+}
+.plan-features li{
+  font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;
+  color:rgba(246,243,242,0.72);line-height:1.5;
+  display:flex;align-items:flex-start;gap:7px;
+}
+.plan-features li::before{
+  content:'•';color:rgba(246,243,242,0.4);
+  font-size:16px;line-height:1.3;flex-shrink:0;
+}
+.plan-tax{font-family:'Quicksand',sans-serif;font-size:11px;font-weight:400;color:rgba(246,243,242,0.4);font-style:italic;margin-top:10px;}
+
+/* FIX #7: subscribe button */
+.plan-subscribe-btn{
+  display:block;width:100%;margin-top:20px;
+  padding:12px 0;
+  background:rgba(246,243,242,0.1);
+  border:1px solid rgba(246,243,242,0.35);
+  color:#F6F3F2;
+  font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:2px;
+  text-align:center;cursor:pointer;
+  transition:background 0.2s,border-color 0.2s;
+  text-decoration:none;
+}
+.plan-subscribe-btn:hover{background:rgba(246,243,242,0.22);border-color:rgba(246,243,242,0.65);color:#F6F3F2;}
 
 /* ── FOOTER ── */
 .site-footer{background:#F6F3F2;padding:56px 0 40px;text-align:center;}
@@ -262,8 +180,6 @@ img{display:block;max-width:100%;}
 .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:36px;}
 .footer-links a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#4C3B37;}
 .footer-links a:hover{text-decoration:underline;}
-.footer-powered{font-family:'Quicksand',sans-serif;font-size:10px;font-weight:400;color:#999;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
-.footer-godaddy{display:inline-flex;align-items:center;gap:6px;font-family:'Quicksand',sans-serif;font-size:15px;font-weight:700;color:#1B1B1B;}
 
 /* ── COOKIE BANNER ── */
 .cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid rgba(0,0,0,0.1);box-shadow:0 -2px 16px rgba(0,0,0,0.07);padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;z-index:9999;}
@@ -279,7 +195,8 @@ img{display:block;max-width:100%;}
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   .hero-inner{flex-direction:column;}
-  .hero-img-col{flex:none;width:100%;min-height:300px;}
+  .hero-img-col{flex:none;width:100%;min-height:300px;max-height:none;}
+  .hero-img-col img{width:100%;height:auto;min-height:0;max-height:none;object-fit:cover;}
   .hero-text-col{flex:none;width:100%;}
   .who-inner{flex-direction:column;gap:32px;}
   .who-mascot img{width:200px;}
@@ -307,7 +224,7 @@ img{display:block;max-width:100%;}
   <p>Subscribe now and get two free bonus downloads that can change your life</p>
 </div>
 
-<!-- HEADER — Logo PNG has brand text baked in -->
+<!-- HEADER -->
 <header class="site-header">
   <a href="https://mygetinspired.com/" class="logo-link">
     <img class="logo-img" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/blob-a395ff7.png/:/rs=h:192,cg:true,m/qt=q:95" alt="Get Inspired">
@@ -319,7 +236,7 @@ img{display:block;max-width:100%;}
         <li><a href="Podcast.html">Podcast</a></li>
         <li><a href="Blog.html">Blog</a></li>
         <li><a href="Contact.html">Contact us</a></li>
-        <li><a href="https://mygetinspired.com/shop">Shop</a></li>
+        <li><a href="Shop.html">Shop</a></li>
       </ul>
     </nav>
   </div>
@@ -335,12 +252,12 @@ img{display:block;max-width:100%;}
       <h1>Build a Healthier, Wealthier, Happier Life</h1>
       <p class="hero-subtext">Grab your copy of</p>
       <p class="hero-mag-name">Get INSPIRED Digital Magazine today!</p>
-      <a href="https://mygetinspired.com/shop" class="btn-subscribe">Subscribe Now</a>
+      <a href="Shop.html" class="btn-subscribe">Subscribe Now</a>
     </div>
   </div>
 </section>
 
-<!-- QUOTE SECTION — with exact SVG double-quote icon -->
+<!-- QUOTE SECTION -->
 <section class="quote-section">
   <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
     <path fill-rule="evenodd" d="M7.373 20c-1.343 0-2.417-.494-3.222-1.482C3.384 17.491 3 16.168 3 14.548c0-2.212.575-4.207 1.726-5.985C5.915 6.746 7.718 5.225 10.134 4l.633.948c-1.15.711-2.205 1.719-3.164 3.022-.92 1.265-1.381 2.548-1.381 3.852 0 .356.096.652.288.89.191.197.479.295.863.295.958 0 1.764.356 2.416 1.067.69.672 1.036 1.501 1.036 2.489s-.346 1.817-1.036 2.489c-.652.632-1.458.948-2.416.948zm9.953 0c-1.343 0-2.417-.494-3.222-1.482-.767-1.027-1.15-2.35-1.15-3.97 0-2.212.575-4.207 1.725-5.985C15.87 6.746 17.671 5.225 20.087 4l.633.948c-1.15.711-2.205 1.719-3.164 3.022-.92 1.265-1.38 2.548-1.38 3.852 0 .356.095.652.287.89.192.197.48.295.863.295.959 0 1.764.356 2.416 1.067.69.672 1.036 1.501 1.036 2.489s-.345 1.817-1.036 2.489c-.652.632-1.457.948-2.416.948z"/>
@@ -370,7 +287,7 @@ img{display:block;max-width:100%;}
   <h2>Get Inspired Comics</h2>
 </section>
 
-<!-- COMICS SLIDESHOW — center-focused, inactive slides at opacity 0.3 -->
+<!-- COMICS SLIDESHOW — FIX #1 auto-scroll, FIX #2 thumbnail alignment -->
 <section class="comics-slide-section">
   <div class="comics-slide-inner">
     <p class="comics-subheading">Life lessons, the comic way.</p>
@@ -388,13 +305,14 @@ img{display:block;max-width:100%;}
       <button class="comics-arrow prev" id="comicsPrev">&#8249;</button>
       <button class="comics-arrow next" id="comicsNext">&#8250;</button>
     </div>
+    <!-- FIX #2: thumbs now in exact same order & same images as slides above -->
     <div class="comics-thumbs" id="comicsThumbs">
-      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/blob-b85b8a5.png/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="0" alt="">
-      <img class="comics-thumb active" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.45.31.jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="1" alt="">
-      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/blob-e6acab5.png/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="2" alt="">
-      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.45.36%20(1).jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="3" alt="">
-      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.45.32%20(1).jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="4" alt="">
-      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.40.23%20(1).jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="5" alt="">
+      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.45.32%20(1).jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="0" alt="Comic 1">
+      <img class="comics-thumb active" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.45.31.jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="1" alt="Comic 2">
+      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/blob-b85b8a5.png/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="2" alt="Comic 3">
+      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.40.23%20(1).jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="3" alt="Comic 4">
+      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/blob-e6acab5.png/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="4" alt="Comic 5">
+      <img class="comics-thumb" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/WhatsApp%20Image%202025-08-28%20at%2011.45.36%20(1).jpeg/:/rs=w:70,h:70,cg:true,m/cr=w:70,h:70,a:cc" data-idx="5" alt="Comic 6">
     </div>
   </div>
 </section>
@@ -405,15 +323,11 @@ img{display:block;max-width:100%;}
     <h2>Little Inspirations</h2>
     <p class="little-sub">Ideas can be life-changing.</p>
     <p class="little-sub">Sometimes all you need in life is just one good idea</p>
-
-    <!-- Filter tabs — clicking navigates like original (All Posts / Happiness / Life) -->
     <div class="blog-filter-row">
       <button class="blog-filter-btn active" data-filter="all">All Posts</button>
       <button class="blog-filter-btn" data-filter="happiness">Happiness</button>
       <button class="blog-filter-btn" data-filter="life">Life</button>
     </div>
-
-    <!-- Blog cards — use real bg images, link to real pages -->
     <div class="blog-grid" id="blogGrid">
       <a href="Get-Started.html" class="blog-card" data-categories="happiness life">
         <div class="blog-card-img" style="background-image:url('https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:540');"></div>
@@ -460,34 +374,67 @@ img{display:block;max-width:100%;}
     <h2>Get Inspired Digital Magazine &#8211; Subscription Plans</h2>
     <p class="plans-subtitle">Invest in Yourself and get your monthly dose of Inspiration starting today</p>
     <div class="plans-grid">
+
+      <!-- Monthly -->
       <div class="plan-card">
         <img class="plan-card-img" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/blob-3db7107.png/:/cr=t:13.23%25,l:2.83%25,w:94.34%25,h:70.93%25/rs=w:360,h:270,cg:true,m" alt="Monthly">
+        <span class="plan-tag tag-starter">Starter Plan</span>
         <div class="plan-name-row"><span class="plan-name">Monthly</span><span class="plan-price">&#8377;199</span></div>
-        <p class="plan-desc">Starter Plan &#8212; For those who want flexibility.</p>
-        <p class="plan-desc">Monthly Digital Magazine</p>
-        <p class="plan-tax">* price is exclusive of tax</p>
+        <ul class="plan-features">
+          <li>Monthly Digital Magazine</li>
+          <li>Flexible, cancel anytime</li>
+        </ul>
+        <p class="plan-tax">* price exclusive of tax</p>
+        <a href="https://mygetinspired.com/shop" class="plan-subscribe-btn">Subscribe</a>
       </div>
+
+      <!-- Quarterly -->
       <div class="plan-card">
         <img class="plan-card-img" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/ols/MONTHLY%20Subscription%20(2).png/:/cr=t:12.41%25,l:0%25,w:100%25,h:75.19%25/rs=w:360,h:270,cg:true" alt="Quarterly">
+        <span class="plan-tag tag-growth">Growth Plan</span>
         <div class="plan-name-row"><span class="plan-name">Quarterly</span><span class="plan-price">&#8377;540</span></div>
-        <p class="plan-desc">Growth Plan - Save &#8377;60</p>
-        <p class="plan-desc">Monthly Digital Magazine | Wheel of Life |</p>
-        <p class="plan-tax">* price is exclusive of tax</p>
+        <ul class="plan-features">
+          <li>Save &#8377;60</li>
+          <li>Monthly Digital Magazine</li>
+          <li>Wheel of Life Bonus Download</li>
+        </ul>
+        <p class="plan-tax">* price exclusive of tax</p>
+        <a href="https://mygetinspired.com/shop" class="plan-subscribe-btn">Subscribe</a>
       </div>
+
+      <!-- Half Yearly -->
       <div class="plan-card">
         <img class="plan-card-img" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/ols/MONTHLY%20Subscription%20(3).png/:/cr=t:12.41%25,l:0%25,w:100%25,h:75.19%25/rs=w:360,h:270,cg:true" alt="Half Yearly">
+        <span class="plan-tag tag-value">Best Value</span>
         <div class="plan-name-row"><span class="plan-name">Half Yearly</span><span class="plan-price">&#8377;900</span></div>
-        <p class="plan-desc">Best Value - Save &#8377;300</p>
-        <p class="plan-desc">Monthly Digital Magazine | Wheel of Life | Think like a winner free e-book | Weekly Newsletter</p>
-        <p class="plan-tax">* price is exclusive of tax</p>
+        <ul class="plan-features">
+          <li>Save &#8377;300</li>
+          <li>Monthly Digital Magazine</li>
+          <li>Wheel of Life Bonus Download</li>
+          <li>Think Like a Winner e-book</li>
+          <li>Weekly Newsletter</li>
+        </ul>
+        <p class="plan-tax">* price exclusive of tax</p>
+        <a href="https://mygetinspired.com/shop" class="plan-subscribe-btn">Subscribe</a>
       </div>
+
+      <!-- Annual -->
       <div class="plan-card">
         <img class="plan-card-img" src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/ols/MONTHLY%20Subscription%20(1).png/:/cr=t:12.41%25,l:0%25,w:100%25,h:75.19%25/rs=w:360,h:270,cg:true" alt="Annual">
+        <span class="plan-tag tag-best">Best Deal &#8212; 3 Months Free</span>
         <div class="plan-name-row"><span class="plan-name">Annual</span><span class="plan-price">&#8377;1799</span></div>
-        <p class="plan-desc">Best Value - Save &#8377;600 (get 3 months free)</p>
-        <p class="plan-desc">Monthly Digital Magazine | Bonus Downloads | Weekly Newsletter | Daily Blog to your inbox</p>
-        <p class="plan-tax">* price is exclusive of tax</p>
+        <ul class="plan-features">
+          <li>Save &#8377;600</li>
+          <li>Monthly Digital Magazine</li>
+          <li>Wheel of Life Bonus Download</li>
+          <li>Think Like a Winner e-book</li>
+          <li>Weekly Newsletter</li>
+          <li>Invites to 2 free Webinars</li>
+        </ul>
+        <p class="plan-tax">* price exclusive of tax</p>
+        <a href="https://mygetinspired.com/shop" class="plan-subscribe-btn">Subscribe</a>
       </div>
+
     </div>
   </div>
 </section>
@@ -541,66 +488,60 @@ document.querySelectorAll('.site-nav a').forEach(function(a){
   });
 });
 
-// ── COMICS CAROUSEL ── center-focused, inactive slides opacity 0.3
+// ── COMICS CAROUSEL — FIX #1: auto-scroll every 7s, FIX #2: thumb mapping fixed ──
 (function(){
   var track = document.getElementById('comicsTrack');
   var slides = track.querySelectorAll('.comics-slide');
   var thumbs = document.querySelectorAll('.comics-thumb');
   var total = slides.length;
-  var current = 1; // start at index 1 (active by default)
+  var current = 1;
+  var autoTimer = null;
 
   function update(){
-  var viewport = track.parentElement;
-  var center = viewport.offsetWidth / 2;
+    var viewport = track.parentElement;
+    var center = viewport.offsetWidth / 2;
+    var activeSlide = slides[current];
+    var offset = activeSlide.offsetLeft + (activeSlide.offsetWidth / 2);
+    track.style.transform = 'translateX(' + (center - offset) + 'px)';
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===current); });
+    thumbs.forEach(function(t,i){ t.classList.toggle('active', i===current); });
+  }
 
-  var activeSlide = slides[current];
+  function goNext(){ current = (current + 1) % total; update(); }
+  function goPrev(){ current = (current - 1 + total) % total; update(); }
 
-  // 👉 get real position of active slide
-  var offset = activeSlide.offsetLeft + (activeSlide.offsetWidth / 2);
+  // FIX #1: Auto-advance every 7 seconds
+  function startAuto(){ autoTimer = setInterval(goNext, 7000); }
+  function resetAuto(){ clearInterval(autoTimer); startAuto(); }
 
-  // 👉 shift so it's centered
-  track.style.transform = 'translateX(' + (center - offset) + 'px)';
+  document.getElementById('comicsPrev').addEventListener('click', function(){ goPrev(); resetAuto(); });
+  document.getElementById('comicsNext').addEventListener('click', function(){ goNext(); resetAuto(); });
 
-  // active states
-  slides.forEach(function(s,i){ 
-    s.classList.toggle('active', i===current); 
-  });
-
-  thumbs.forEach(function(t,i){ 
-    t.classList.toggle('active', i===current); 
-  });
-}
-
-  document.getElementById('comicsPrev').addEventListener('click',function(){
-    if(current>0){ current--; update(); }
-  });
-  document.getElementById('comicsNext').addEventListener('click',function(){
-    if(current<total-1){ current++; update(); }
-  });
   thumbs.forEach(function(t){
-    t.addEventListener('click',function(){
-      current=parseInt(this.dataset.idx); update();
+    t.addEventListener('click', function(){
+      current = parseInt(this.dataset.idx);
+      update();
+      resetAuto();
     });
   });
+
   window.addEventListener('resize', update);
   update();
+  startAuto();
 })();
 
-// ── BLOG FILTER TABS ── show/hide cards by category
+// ── BLOG FILTER TABS ──
 (function(){
   var btns = document.querySelectorAll('.blog-filter-btn');
   var cards = document.querySelectorAll('.blog-card');
-
   btns.forEach(function(btn){
     btn.addEventListener('click',function(){
       var filter = this.dataset.filter;
       btns.forEach(function(b){ b.classList.remove('active'); });
       this.classList.add('active');
-
       cards.forEach(function(card){
-        if(filter === 'all'){
-          card.style.display = 'block';
-        } else {
+        if(filter === 'all'){ card.style.display = 'block'; }
+        else {
           var cats = card.dataset.categories || '';
           card.style.display = cats.includes(filter) ? 'block' : 'none';
         }
