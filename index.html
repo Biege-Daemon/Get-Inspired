@@ -25,13 +25,8 @@ img{display:block;max-width:100%;}
 .logo-img{width:192px;height:192px;object-fit:contain;margin:0 auto;}
 
 /* ── NAV ── */
-.site-nav-wrap{border-top:0px solid #e8e3e2;margin-top:18px;}
-.site-nav{display:flex;justify-content:center;gap:48px;padding:40px;}
-.site-nav li a{
-  font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;
-  color:#151515;text-transform:uppercase;letter-spacing:2.996px;line-height:24px;
-  display:inline-block;padding:18px 0 2px;border-bottom:1px solid transparent;
-  margin-bottom:-2px;transition:border-color 0.15s;}
+.site-nav{display:flex;justify-content:center;gap:48px;padding:0;}
+.site-nav li a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2.996px;line-height:24px;display:inline-block;padding:18px 0 16px;border-bottom:2px solid transparent;margin-bottom:-2px;transition:border-color 0.15s;}
 .site-nav li a.active,.site-nav li a:hover{border-bottom-color:#4C3B37;}
 
 /* ── HERO — FIX #3: image keeps natural width, right col fills remaining space ── */
@@ -39,7 +34,7 @@ img{display:block;max-width:100%;}
 .hero-inner{max-width:1200px;margin:0 auto;padding:60px 40px;display:flex;align-items:stretch;}
 .hero-img-col{flex:0 0 auto;overflow:hidden;background:#111;min-height:480px;max-height:540px;}
 .hero-img-col img{width:auto;height:100%;min-height:480px;max-height:540px;object-fit:cover;display:block;}
-.hero-text-col{flex:1;background:#F6F3F2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 44px;max-height:540px;text-align:center;}
+.hero-text-col{flex:1;background:#F6F3F2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 44px;text-align:center;}
 .hero-text-col h1{font-family:'Fjalla One',arial,sans-serif;font-size:44px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:1.012px;line-height:52.8px;margin-bottom:20px;}
 .hero-subtext{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#575757;line-height:1.6;margin-bottom:2px;}
 .hero-mag-name{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#575757;line-height:1.6;margin-bottom:32px;}
@@ -111,6 +106,84 @@ img{display:block;max-width:100%;}
 .bonus-card{background:#161616;padding:56px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;}
 .bonus-card h4{font-family:'Quicksand',sans-serif;font-size:22px;font-weight:400;color:#F7F7F7;letter-spacing:0.99px;line-height:27.5px;}
 .bonus-card p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.65;}
+
+/* ── MAGAZINE CARD ── */
+.mag-card-section{
+  background:#1A1A1A;
+  padding:72px 0;
+  position:relative;
+  overflow:hidden;
+}
+.mag-card-section::before{
+  content:'';
+  position:absolute;
+  top:-120px;left:-120px;
+  width:480px;height:480px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(76,59,55,0.55) 0%,transparent 70%);
+  pointer-events:none;
+}
+.mag-card-section::after{
+  content:'';
+  position:absolute;
+  bottom:-100px;right:-80px;
+  width:360px;height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(115,95,91,0.35) 0%,transparent 70%);
+  pointer-events:none;
+}
+.mag-card-inner{
+  max-width:1200px;margin:0 auto;padding:0 40px;
+  display:flex;justify-content:center;align-items:center;gap:64px;
+  position:relative;z-index:1;
+}
+.mag-card-text{
+  max-width:320px;
+  flex-shrink:0;
+}
+.mag-card-eyebrow{
+  font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:3px;
+  color:rgba(246,243,242,0.45);margin-bottom:16px;display:block;
+}
+.mag-card-text h3{
+  font-family:'Fjalla One',arial,sans-serif;font-size:28px;font-weight:400;
+  color:#F6F3F2;text-transform:uppercase;letter-spacing:0.93px;line-height:1.25;
+  margin-bottom:16px;
+}
+.mag-card-text p{
+  font-family:'Quicksand',sans-serif;font-size:15px;font-weight:400;
+  color:rgba(246,243,242,0.55);line-height:1.7;
+}
+.mag-card-link{
+  display:inline-block;
+  position:relative;
+  transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.mag-card-link::before{
+  content:'';
+  position:absolute;
+  inset:-12px;
+  background:radial-gradient(ellipse at center,rgba(76,59,55,0.6) 0%,transparent 70%);
+  filter:blur(20px);
+  z-index:-1;
+  transition:opacity 0.3s;
+  opacity:0.7;
+}
+.mag-card-link:hover{transform:translateY(-8px) rotate(-1deg);}
+.mag-card-link:hover::before{opacity:1;}
+.mag-card-img{
+  width:300px;height:400px;
+  object-fit:cover;display:block;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    0 4px 16px rgba(0,0,0,0.4),
+    inset -2px 0 8px rgba(0,0,0,0.2);
+}
+@media(max-width:760px){
+  .mag-card-inner{flex-direction:column;gap:40px;text-align:center;}
+  .mag-card-text{max-width:100%;}
+}
 
 /* ── SUBSCRIPTION PLANS — FIX #4 bullets, #5 tags, #6 uniform, #7 subscribe btn ── */
 .plans-section{background:#4C3B37;padding:40px 0;}
@@ -277,7 +350,7 @@ img{display:block;max-width:100%;}
       <img src="https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Get%20Inspired%20Logo-1.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:400,cg:true" alt="Get Inspired Mascot">
     </div>
     <div class="who-content">
-      <h4>WHO WE ARE</h4>
+      <h4>WHO ARE WE</h4>
       <p>At <em>Get INSPIRED</em>, we believe a single idea has the power to transform your life. Our magazine brings you thought-provoking stories, expert insights, and practical tools on health, wealth and happiness to help you achieve your goals and live your dreams.</p>
       <h4>Our Belief</h4>
       <p>We believe everyone deserves a little inspiration—a pat on the back, a story of courage, a reminder to keep moving forward and a voice that says "You've got this!". That spark could come from a movie, a song, a story, a single powerful moment, or even from a real-life journey of someone who dared to dream.</p>
@@ -370,6 +443,20 @@ img{display:block;max-width:100%;}
         <p>Free e-book<br>50 Powerful Life-Changing Ideas Used by the World's Most Successful People.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- MAGAZINE CARD -->
+<section class="mag-card-section">
+  <div class="mag-card-inner">
+    <div class="mag-card-text">
+      <span class="mag-card-eyebrow">Latest Issue</span>
+      <h3>Your Monthly Dose of Inspiration</h3>
+      <p>Every issue packed with ideas on health, wealth and happiness — crafted to help you build a life you love.</p>
+    </div>
+    <a href="#" class="mag-card-link">
+      <img class="mag-card-img" src="https://placehold.co/300x400/4C3B37/F6F3F2?text=Magazine+Cover" alt="Magazine Cover">
+    </a>
   </div>
 </section>
 
