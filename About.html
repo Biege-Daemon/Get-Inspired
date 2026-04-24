@@ -42,10 +42,59 @@ img{display:block;max-width:100%;}
 /* ── ABOUT INTRO SECTION ── */
 .about-intro{background:#fff;padding:56px 0 40px;}
 .about-intro-inner{max-width:760px;margin:0 auto;padding:0 40px;text-align:center;}
+.about-intro-tagline{
+  font-family:'Fjalla One',arial,sans-serif;
+  font-size:22px;font-weight:400;color:#1B1B1B;
+  text-transform:uppercase;letter-spacing:0.93px;
+  margin-bottom:20px;
+}
 .about-intro p{
   font-family:'Quicksand',sans-serif;font-size:17px;font-weight:400;
   color:rgb(94,94,94);line-height:1.8;
 }
+
+/* ── ABOUT BODY (why / what / pillars) ── */
+.about-body{background:#fff;padding:0 0 56px;}
+.about-body-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+
+.about-two-col{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;margin-bottom:56px;
+  padding-top:48px;
+  border-top:1px solid rgba(76,59,55,0.1);
+}
+.about-col-title{
+  font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:3px;color:#4C3B37;
+  margin-bottom:20px;
+}
+.about-col p{
+  font-family:'Quicksand',sans-serif;font-size:16px;
+  color:rgb(94,94,94);line-height:1.8;margin-bottom:12px;
+}
+.about-col p:last-child{margin-bottom:0;}
+.about-list{display:flex;flex-direction:column;gap:12px;}
+.about-list li{
+  font-family:'Quicksand',sans-serif;font-size:16px;
+  color:rgb(94,94,94);line-height:1.6;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.about-list li::before{content:'—';color:#4C3B37;font-weight:700;flex-shrink:0;}
+
+.about-pillars{border-top:1px solid rgba(76,59,55,0.1);padding-top:48px;}
+.about-pillars-title{
+  font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:3px;color:#4C3B37;
+  text-align:center;margin-bottom:32px;
+}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.pillar{padding:28px 32px;border-right:1px solid rgba(76,59,55,0.1);}
+.pillar:last-child{border-right:none;}
+.pillar-title{
+  font-family:'Quicksand',sans-serif;font-size:15px;font-weight:700;
+  color:#1B1B1B;display:block;margin-bottom:10px;
+}
+.pillar p{font-family:'Quicksand',sans-serif;font-size:15px;color:rgb(94,94,94);line-height:1.7;}
 
 /* ── TEAM SECTION ── */
 .team-section{background:#F6F3F2;padding:56px 0 72px;}
@@ -66,15 +115,13 @@ img{display:block;max-width:100%;}
 }
 .creator-card:last-child{border-bottom:none;}
 
-/* Alternate: odd cards normal, even cards flip */
+/* Alternate: even cards flip */
 .creator-card:nth-child(even){flex-direction:row-reverse;}
 
 .creator-photo-wrap{flex:0 0 240px;}
 .creator-photo{
   width:240px;height:280px;
-  object-fit:cover;
-  display:block;
-  background:#ddd;
+  object-fit:cover;display:block;background:#ddd;
 }
 .creator-photo-placeholder{
   width:240px;height:280px;
@@ -86,16 +133,14 @@ img{display:block;max-width:100%;}
   font-family:'Fjalla One',arial,sans-serif;
   font-size:48px;font-weight:400;
   color:rgba(246,243,242,0.35);
-  text-transform:uppercase;
-  letter-spacing:4px;
+  text-transform:uppercase;letter-spacing:4px;
 }
 
 .creator-info{flex:1;min-width:0;padding-top:8px;}
 .creator-name{
   font-family:'Fjalla One',arial,sans-serif;
   font-size:26px;font-weight:400;color:#1B1B1B;
-  text-transform:uppercase;letter-spacing:0.93px;
-  margin-bottom:6px;
+  text-transform:uppercase;letter-spacing:0.93px;margin-bottom:6px;
 }
 .creator-role{
   font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
@@ -108,6 +153,31 @@ img{display:block;max-width:100%;}
 }
 .creator-bio p{margin-bottom:12px;}
 .creator-bio p:last-child{margin-bottom:0;}
+
+/* ── VISION + CTA ── */
+.about-vision{background:rgb(22,22,22);padding:72px 40px;text-align:center;}
+.about-vision-inner{max-width:640px;margin:0 auto;}
+.vision-eyebrow{
+  font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:4px;
+  color:rgba(246,243,242,0.35);margin-bottom:20px;display:block;
+}
+.about-vision h2{
+  font-family:'Fjalla One',arial,sans-serif;font-size:26px;font-weight:400;
+  color:#F6F3F2;text-transform:uppercase;letter-spacing:0.93px;line-height:1.3;
+  margin-bottom:20px;
+}
+.about-vision p{
+  font-family:'Quicksand',sans-serif;font-size:16px;
+  color:rgba(246,243,242,0.5);line-height:1.7;margin-bottom:32px;
+}
+.vision-cta{
+  display:inline-block;background:#4C3B37;color:#F6F3F2;
+  font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:3px;padding:16px 40px;
+  transition:opacity 0.2s;
+}
+.vision-cta:hover{opacity:0.85;color:#F6F3F2;}
 
 /* ── FOOTER ── */
 .site-footer{background:#F6F3F2;padding:56px 0 40px;text-align:center;}
@@ -134,6 +204,12 @@ img{display:block;max-width:100%;}
 .chat-widget:hover{transform:scale(1.07);}
 
 /* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .about-two-col{grid-template-columns:1fr;}
+  .pillars-grid{grid-template-columns:1fr;}
+  .pillar{border-right:none;border-bottom:1px solid rgba(76,59,55,0.1);padding:24px 0;}
+  .pillar:last-child{border-bottom:none;}
+}
 @media(max-width:760px){
   .creator-card,
   .creator-card:nth-child(even){flex-direction:column;gap:28px;}
@@ -144,8 +220,7 @@ img{display:block;max-width:100%;}
 @media(max-width:640px){
   .site-nav{gap:16px;overflow-x:auto;justify-content:flex-start;padding:0 16px;}
   .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;}
-  .about-intro-inner{padding:0 24px;}
-  .team-inner{padding:0 24px;}
+  .about-intro-inner,.about-body-inner,.team-inner{padding:0 24px;}
 }
 </style>
 </head>
@@ -183,69 +258,122 @@ img{display:block;max-width:100%;}
 <!-- INTRO -->
 <section class="about-intro">
   <div class="about-intro-inner">
-    <p>Get Inspired Magazine was born from a shared belief — that the right idea, at the right moment, can change everything. Meet the three people behind the movement.</p>
+    <p class="about-intro-tagline">Inspiring Better Lives, One Issue at a Time</p>
+    <p><strong>Get Inspired</strong> is a monthly playbook designed to help you become <strong>healthier, wealthier, and happier</strong> through curated, actionable insights.</p>
+  </div>
+</section>
+
+<!-- WHY / WHAT / PILLARS -->
+<section class="about-body">
+  <div class="about-body-inner">
+
+    <div class="about-two-col">
+      <div class="about-col">
+        <p class="about-col-title">Why We Started</p>
+        <p>In a world filled with constant information, finding clarity has become harder than ever. There is no shortage of content, but there is a lack of direction.</p>
+        <p>We didn&#8217;t want to create just another magazine. <strong>Get Inspired was built to simplify growth</strong> into something practical, structured, and easy to apply. Every issue is designed to cut through the noise and deliver what truly matters.</p>
+      </div>
+      <div class="about-col">
+        <p class="about-col-title">What You Receive Every Month</p>
+        <ul class="about-list">
+          <li>A <strong>54-page premium digital magazine</strong></li>
+          <li>Three focused segments covering <strong>health, wealth, and happiness</strong></li>
+          <li><strong>Clear frameworks and insights</strong> you can apply immediately</li>
+          <li>A <strong>structured approach to continuous self-improvement</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about-pillars">
+      <p class="about-pillars-title">What Makes Get Inspired Different</p>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <span class="pillar-title">Curated, not crowded</span>
+          <p>Only the most relevant and high-impact insights make it into each issue.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-title">Actionable, not theoretical</span>
+          <p>Every section is designed to be implemented, not just read.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-title">Holistic growth</span>
+          <p>A balanced focus on becoming healthier, wealthier, and happier.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- TEAM -->
 <section class="team-section">
   <div class="team-inner">
-    <p class="team-section-title">The Team</p>
+    <p class="team-section-title">Meet the Founding Team</p>
 
-    <!-- Creator 1 -->
+    <!-- Mouli Jayaraman -->
     <div class="creator-card">
       <div class="creator-photo-wrap">
-        <!-- Replace src with actual photo URL -->
+        <!-- Replace with: <img class="creator-photo" src="YOUR_PHOTO_URL" alt="Mouli Jayaraman"> -->
         <div class="creator-photo-placeholder">
-          <span>AB</span>
+          <span>MJ</span>
         </div>
       </div>
       <div class="creator-info">
-        <h2 class="creator-name">Creator Name</h2>
-        <span class="creator-role">Co-Founder &amp; Editor</span>
+        <h2 class="creator-name">Mouli Jayaraman</h2>
+        <span class="creator-role">Founder &amp; Editor-in-Chief</span>
         <div class="creator-bio">
-          <p>Replace this with a write-up about the first creator. Talk about their background, what drives them, and the role they play in bringing Get Inspired Magazine to life.</p>
-          <p>A second paragraph can go here — a personal note, a philosophy they live by, or what inspiration means to them.</p>
+          <p>Mouli owns the <strong>vision, editorial voice, and philosophy</strong> behind Get Inspired, ensuring every issue reflects clarity, depth, and meaningful direction.</p>
+          <p>As the final authority on all editorial decisions, he shapes the magazine&#8217;s identity and ensures that every page delivers something truly worth reading.</p>
         </div>
       </div>
     </div>
 
-    <!-- Creator 2 -->
+    <!-- Septinda Jeevaa -->
     <div class="creator-card">
       <div class="creator-photo-wrap">
-        <!-- Replace src with actual photo URL -->
+        <!-- Replace with: <img class="creator-photo" src="YOUR_PHOTO_URL" alt="Septinda Jeevaa"> -->
         <div class="creator-photo-placeholder">
-          <span>CD</span>
+          <span>SJ</span>
         </div>
       </div>
       <div class="creator-info">
-        <h2 class="creator-name">Creator Name</h2>
-        <span class="creator-role">Co-Founder &amp; Creative Director</span>
+        <h2 class="creator-name">Septinda Jeevaa</h2>
+        <span class="creator-role">Co-Founder, COO &amp; Content Head</span>
         <div class="creator-bio">
-          <p>Replace this with a write-up about the second creator. Talk about their background, what drives them, and the role they play in bringing Get Inspired Magazine to life.</p>
-          <p>A second paragraph can go here — a personal note, a philosophy they live by, or what inspiration means to them.</p>
+          <p>Septinda leads <strong>execution across the platform</strong>, overseeing systems, timelines, and delivery. She drives content creation and ensures consistency, structure, and quality across every issue.</p>
+          <p>Her role bridges strategy and execution &#8212; making sure that what Get Inspired promises, it always delivers.</p>
         </div>
       </div>
     </div>
 
-    <!-- Creator 3 -->
+    <!-- Nandagopal -->
     <div class="creator-card">
       <div class="creator-photo-wrap">
-        <!-- Replace src with actual photo URL -->
+        <!-- Replace with: <img class="creator-photo" src="YOUR_PHOTO_URL" alt="Nandagopal"> -->
         <div class="creator-photo-placeholder">
-          <span>EF</span>
+          <span>NG</span>
         </div>
       </div>
       <div class="creator-info">
-        <h2 class="creator-name">Creator Name</h2>
-        <span class="creator-role">Co-Founder &amp; Head of Content</span>
+        <h2 class="creator-name">Nandagopal</h2>
+        <span class="creator-role">Co-Founder, CFO &amp; Marketing Head</span>
         <div class="creator-bio">
-          <p>Replace this with a write-up about the third creator. Talk about their background, what drives them, and the role they play in bringing Get Inspired Magazine to life.</p>
-          <p>A second paragraph can go here — a personal note, a philosophy they live by, or what inspiration means to them.</p>
+          <p>Nandagopal oversees <strong>marketing, sales, and financial strategy</strong> while managing contributor coordination and building a strong, engaging community experience.</p>
+          <p>He ensures that Get Inspired reaches the people who need it most &#8212; and that the business behind the mission is built to last.</p>
         </div>
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- VISION + CTA -->
+<section class="about-vision">
+  <div class="about-vision-inner">
+    <span class="vision-eyebrow">Our Vision</span>
+    <h2>A trusted monthly companion for individuals who want to continuously improve their lives &#8212; without the noise.</h2>
+    <p>Get Inspired is not just a magazine. It is a system for growth.</p>
+    <a href="Shop.html" class="vision-cta">Subscribe Now</a>
   </div>
 </section>
 
