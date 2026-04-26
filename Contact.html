@@ -91,16 +91,50 @@ img{display:block;max-width:100%;}
 .chat-widget:hover{transform:scale(1.07);}
 
 /* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .contact-flex{flex-direction:column;}
-  .contact-left,.contact-right{flex:none;width:100%;padding-left:0;}
-  .contact-right{margin-top:40px;}
-  .rocket-img{width:100%;max-width:444px;margin:0 auto;}
+
+@media(max-width:768px){
+  /* Announcement bar */
+  .ann-bar p{font-size:12px;letter-spacing:1px;padding:0 16px;}
+
+  /* Header */
+  .site-header{padding:32px 0 0;}
+  .logo-img{width:120px;height:120px;}
+
+  /* Nav */
+  .site-nav{gap:0;overflow-x:auto;justify-content:flex-start;padding:16px 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .site-nav::-webkit-scrollbar{display:none;}
+  .site-nav li{flex-shrink:0;}
+  .site-nav li a{font-size:12px;letter-spacing:1.5px;padding-bottom:12px;}
+
+  /* Footer */
+  .site-footer{padding:40px 24px 32px;}
+  .footer-socials{gap:20px;}
+  .footer-links{flex-direction:column;gap:8px;align-items:center;}
+
+  /* Cookie banner */
+  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
+  .cookie-btn{width:100%;}
+
+  /* Chat widget */
+  .chat-widget{bottom:20px;right:16px;width:44px;height:44px;}
 }
-@media(max-width:640px){
-  .site-nav{gap:16px;overflow-x:auto;justify-content:flex-start;padding:0 16px;}
-  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;}
-  .wa-btn{min-width:auto;width:100%;}
+@media(max-width:960px){
+  .contact-flex{flex-direction:column;gap:40px;}
+  .contact-left,.contact-right{width:100%;}
+}
+@media(max-width:768px){
+  /* Touch / hero section */
+  .touch-section{padding:48px 24px;}
+  .contact-section{padding:40px 24px;}
+  .contact-inner{padding:0;}
+  .contact-left h2{font-size:clamp(22px,6vw,36px);}
+  .contact-right h3{font-size:18px;}
+
+  /* Form fields */
+  .contact-field{margin-bottom:16px;}
+  .contact-field input,
+  .contact-field textarea{padding:12px 14px;font-size:14px;}
+  .contact-submit{width:100%;text-align:center;}
 }
 </style>
 </head>
