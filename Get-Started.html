@@ -129,16 +129,62 @@ img{display:block;max-width:100%;}
 .chat-widget:hover{transform:scale(1.07);}
 
 /* ── RESPONSIVE ── */
+
+@media(max-width:768px){
+  /* Announcement bar */
+  .ann-bar p{font-size:12px;letter-spacing:1px;padding:0 16px;}
+
+  /* Header */
+  .site-header{padding:32px 0 0;}
+  .logo-img{width:120px;height:120px;}
+
+  /* Nav */
+  .site-nav{gap:0;overflow-x:auto;justify-content:flex-start;padding:16px 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .site-nav::-webkit-scrollbar{display:none;}
+  .site-nav li{flex-shrink:0;}
+  .site-nav li a{font-size:12px;letter-spacing:1.5px;padding-bottom:12px;}
+
+  /* Footer */
+  .site-footer{padding:40px 24px 32px;}
+  .footer-socials{gap:20px;}
+  .footer-links{flex-direction:column;gap:8px;align-items:center;}
+
+  /* Cookie banner */
+  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
+  .cookie-btn{width:100%;}
+
+  /* Chat widget */
+  .chat-widget{bottom:20px;right:16px;width:44px;height:44px;}
+}
 @media(max-width:960px){
   .article-layout{flex-direction:column;}
-  .article-main{flex:none;width:100%;}
-  .article-sidebar{flex:none;width:100%;padding-right:0;padding-top:32px;border-top:1px solid #e8e3e2;margin-top:32px;}
-  .follow-icons{gap:24px;}
+  .article-main{width:100%;}
+  .article-sidebar{width:100%;max-width:100%;}
+  .recent-post{flex-direction:row;}
+  .recent-post-thumb{width:80px;height:80px;flex-shrink:0;}
 }
-@media(max-width:640px){
-  .site-nav{gap:16px;overflow-x:auto;justify-content:flex-start;padding:0 16px;}
-  .article-hero-img{max-width:100%;}
-  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;}
+@media(max-width:768px){
+  /* Follow */
+  .follow-inner{padding:0 24px;}
+  .follow-icons{gap:16px;}
+
+  /* Blog header */
+  .blog-header-section{padding:48px 24px;}
+  .blog-header-inner h1{font-size:clamp(22px,6vw,36px);}
+
+  /* Article */
+  .article-inner{padding:0 24px;}
+  .article-meta{flex-direction:column;gap:4px;}
+  .article-body{font-size:15px;line-height:1.7;}
+  .article-body h2{font-size:20px;}
+  .article-body h3{font-size:17px;}
+  .share-row{flex-wrap:wrap;gap:8px;}
+  .share-row a{flex:1;text-align:center;}
+
+  /* Sidebar */
+  .article-sidebar{padding:0;}
+  .recent-post-thumb{width:72px;height:72px;}
+  .recent-post-info h4{font-size:13px;}
 }
 </style>
 </head>
