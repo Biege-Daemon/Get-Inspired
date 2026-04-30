@@ -20,23 +20,38 @@ img{display:block;max-width:100%;}
 .ann-bar p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#fff;text-transform:uppercase;letter-spacing:2px;line-height:24px;padding:0 40px;}
 
 /* ── HEADER ── */
-.site-header{background:#fff;text-align:center;padding:88px 0 0;}
+.site-header{background:#fff;text-align:center;padding:56px 0 0;}
 .logo-link{display:inline-block;}
-.logo-img{width:192px;height:192px;object-fit:contain;margin:0 auto;}
+.logo-img{width:140px;height:140px;object-fit:contain;margin:0 auto;}
 
 /* ── NAV ── */
-.site-nav-wrap{border-top:0px solid #e8e3e2;margin-top:18px;}
-.site-nav{display:flex;justify-content:center;gap:48px;padding:40px;}
+.site-nav-wrap{margin-top:18px;}
+.site-nav{display:flex;justify-content:center;gap:48px;padding:24px 40px;}
 .site-nav li a{
   font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;
   color:#151515;text-transform:uppercase;letter-spacing:2.996px;line-height:24px;
-  display:inline-block;padding:18px 0 2px;border-bottom:1px solid transparent;
+  display:inline-block;padding:10px 0 2px;border-bottom:1px solid transparent;
   margin-bottom:-2px;transition:border-color 0.15s;
 }
 .site-nav li a.active,.site-nav li a:hover{border-bottom-color:#4C3B37;}
 
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;gap:5px;background:none;border:none;padding:0;position:absolute;right:20px;top:50%;transform:translateY(-50%);}
+.hamburger span{display:block;width:24px;height:2px;background:#151515;transition:all 0.3s ease;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-nav{display:none;flex-direction:column;background:#fff;border-top:1px solid rgba(76,59,55,0.1);padding:0;}
+.mobile-nav.open{display:flex;}
+.mobile-nav li a{display:block;padding:16px 24px;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid rgba(76,59,55,0.07);}
+.mobile-nav li:last-child a{border-bottom:none;}
+.mobile-nav li a.active,.mobile-nav li a:hover{color:#4C3B37;background:rgba(76,59,55,0.04);}
+
+.nav-header-row{position:relative;display:flex;align-items:center;justify-content:center;}
+
 /* ── PAGE HERO BANNER ── */
-.page-hero{background:rgb(22,22,22);padding:40px 20px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;}
+.page-hero{background:rgb(22,22,22);padding:48px 20px;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;}
 .page-hero h1{font-family:'Fjalla One',arial,sans-serif;font-size:30px;font-weight:400;color:#F7F7F7;text-transform:uppercase;letter-spacing:0.93px;line-height:37.5px;}
 
 /* ── ABOUT INTRO SECTION ── */
@@ -46,7 +61,7 @@ img{display:block;max-width:100%;}
   font-family:'Fjalla One',arial,sans-serif;
   font-size:22px;font-weight:400;color:#1B1B1B;
   text-transform:uppercase;letter-spacing:0.93px;
-  margin-bottom:20px;
+  display:block;margin-bottom:20px;
 }
 .about-intro p{
   font-family:'Quicksand',sans-serif;font-size:17px;font-weight:400;
@@ -66,7 +81,7 @@ img{display:block;max-width:100%;}
 .about-col-title{
   font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
   text-transform:uppercase;letter-spacing:3px;color:#4C3B37;
-  margin-bottom:20px;
+  margin-bottom:20px;display:block;
 }
 .about-col p{
   font-family:'Quicksand',sans-serif;font-size:16px;
@@ -85,7 +100,7 @@ img{display:block;max-width:100%;}
 .about-pillars-title{
   font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
   text-transform:uppercase;letter-spacing:3px;color:#4C3B37;
-  text-align:center;margin-bottom:32px;
+  text-align:center;margin-bottom:32px;display:block;
 }
 .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
 .pillar{padding:28px 32px;border-right:1px solid rgba(76,59,55,0.1);}
@@ -103,31 +118,26 @@ img{display:block;max-width:100%;}
 .team-section-title{
   font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;
   color:#4C3B37;text-transform:uppercase;letter-spacing:3px;
-  text-align:center;margin-bottom:48px;
+  text-align:center;margin-bottom:48px;display:block;
 }
 
-/* Each creator card — horizontal layout: photo left, text right */
 .creator-card{
   display:flex;flex-direction:row;align-items:flex-start;
-  gap:48px;
-  padding:48px 0;
+  gap:48px;padding:48px 0;
   border-bottom:1px solid rgba(76,59,55,0.12);
 }
 .creator-card:last-child{border-bottom:none;}
-
-/* Alternate: even cards flip */
 .creator-card:nth-child(even){flex-direction:row-reverse;}
 
 .creator-photo-wrap{flex:0 0 240px;}
 .creator-photo{
   width:240px;height:280px;
-  object-fit:cover;display:block;background:#ddd;
+  object-fit:cover;display:block;
 }
 .creator-photo-placeholder{
   width:240px;height:280px;
   background:rgb(63,48,45);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
 }
 .creator-photo-placeholder span{
   font-family:'Fjalla One',arial,sans-serif;
@@ -204,72 +214,50 @@ img{display:block;max-width:100%;}
 .chat-widget:hover{transform:scale(1.07);}
 
 /* ── RESPONSIVE ── */
-
-@media(max-width:768px){
-  /* Announcement bar */
-  .ann-bar p{font-size:12px;letter-spacing:1px;padding:0 16px;}
-
-  /* Header */
-  .site-header{padding:32px 0 0;}
-  .logo-img{width:120px;height:120px;}
-
-  /* Nav */
-  .site-nav{gap:0;overflow-x:auto;justify-content:flex-start;padding:16px 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-  .site-nav::-webkit-scrollbar{display:none;}
-  .site-nav li{flex-shrink:0;}
-  .site-nav li a{font-size:12px;letter-spacing:1.5px;padding-bottom:12px;}
-
-  /* Footer */
-  .site-footer{padding:40px 24px 32px;}
-  .footer-socials{gap:20px;}
-  .footer-links{flex-direction:column;gap:8px;align-items:center;}
-
-  /* Cookie banner */
-  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
-  .cookie-btn{width:100%;}
-
-  /* Chat widget */
-  .chat-widget{bottom:20px;right:16px;width:44px;height:44px;}
-}
 @media(max-width:960px){
-  .about-two-col{grid-template-columns:1fr;}
+  .about-two-col{grid-template-columns:1fr;gap:40px;}
   .pillars-grid{grid-template-columns:1fr;}
   .pillar{border-right:none;border-bottom:1px solid rgba(76,59,55,0.1);padding:24px 0;}
   .pillar:last-child{border-bottom:none;padding-bottom:0;}
 }
+
 @media(max-width:768px){
-  /* Page hero */
-  .page-hero{padding:48px 24px;}
-  .page-hero h1{font-size:clamp(28px,8vw,52px);}
+  .ann-bar p{font-size:11px;letter-spacing:0.5px;padding:0 16px;}
+  .site-header{padding:24px 0 0;}
+  .logo-img{width:100px;height:100px;}
+  .site-nav-wrap{display:none;}
+  .hamburger{display:flex;}
+  .nav-header-row{padding:12px 20px;}
 
-  /* Intro */
   .about-intro-inner{padding:0 24px;}
-  .about-intro-tagline{font-size:clamp(20px,5vw,32px);}
+  .about-intro-tagline{font-size:18px;}
+  .about-intro p{font-size:15px;}
 
-  /* Body */
   .about-body-inner{padding:0 24px;}
-  .about-col-title{font-size:18px;}
+  .about-two-col{padding-top:32px;gap:32px;margin-bottom:40px;}
 
-  /* Pillars */
-  .about-pillars{padding:48px 24px;}
-  .about-pillars-title{font-size:clamp(20px,5vw,30px);}
-  .pillar-title{font-size:16px;}
+  .about-pillars{padding-top:32px;}
+  .about-pillars-title{font-size:12px;}
 
-  /* Team */
   .team-inner{padding:0 24px;}
-  .team-section-title{font-size:clamp(20px,5vw,30px);}
-  .creator-card,.creator-card:nth-child(even){flex-direction:column;gap:24px;}
+  .creator-card,.creator-card:nth-child(even){
+    flex-direction:column;gap:24px;padding:32px 0;
+  }
   .creator-photo-wrap{flex:none;width:100%;}
-  .creator-photo,.creator-photo-placeholder{width:100%;height:240px;}
-  .creator-photo-placeholder span{font-size:32px;}
+  .creator-photo,.creator-photo-placeholder{width:100%;height:220px;}
+  .creator-photo-placeholder span{font-size:36px;}
   .creator-name{font-size:20px;}
+  .creator-role{font-size:11px;letter-spacing:1.5px;}
 
-  /* Vision */
   .about-vision{padding:48px 24px;}
-  .about-vision-inner{padding:0;}
-  .vision-eyebrow{font-size:10px;}
-  .about-vision h2{font-size:clamp(22px,6vw,36px);}
-  .vision-cta{width:100%;text-align:center;}
+  .about-vision h2{font-size:20px;}
+  .vision-cta{width:100%;text-align:center;display:block;}
+
+  .site-footer{padding:40px 24px 32px;}
+  .footer-links{flex-direction:column;gap:10px;align-items:center;}
+  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
+  .cookie-btn{width:100%;}
+  .chat-widget{bottom:20px;right:16px;width:44px;height:44px;}
 }
 </style>
 </head>
@@ -282,9 +270,10 @@ img{display:block;max-width:100%;}
 
 <!-- HEADER -->
 <header class="site-header">
-  <a href="https://mygetinspired.com/" class="logo-link">
+  <a href="index.html" class="logo-link">
     <img class="logo-img" src="Images/Get Inspired Logo.png" alt="Get Inspired">
   </a>
+  <!-- Desktop nav -->
   <div class="site-nav-wrap">
     <nav>
       <ul class="site-nav">
@@ -297,6 +286,22 @@ img{display:block;max-width:100%;}
       </ul>
     </nav>
   </div>
+  <!-- Mobile nav -->
+  <div class="nav-header-row">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav>
+    <ul class="mobile-nav" id="mobileNav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html" class="active">About Us</a></li>
+      <li><a href="Podcast.html">Podcast</a></li>
+      <li><a href="Blog.html">Blog</a></li>
+      <li><a href="Contact.html">Contact us</a></li>
+      <li><a href="Shop.html">Shop</a></li>
+    </ul>
+  </nav>
 </header>
 
 <!-- PAGE HERO -->
@@ -307,7 +312,7 @@ img{display:block;max-width:100%;}
 <!-- INTRO -->
 <section class="about-intro">
   <div class="about-intro-inner">
-    <p class="about-intro-tagline">Inspiring Better Lives, One Issue at a Time</p>
+    <span class="about-intro-tagline">Inspiring Better Lives, One Issue at a Time</span>
     <p><strong>Get Inspired</strong> is a monthly playbook designed to help you become <strong>healthier, wealthier, and happier</strong> through curated, actionable insights.</p>
   </div>
 </section>
@@ -318,12 +323,12 @@ img{display:block;max-width:100%;}
 
     <div class="about-two-col">
       <div class="about-col">
-        <p class="about-col-title">Why We Started</p>
+        <span class="about-col-title">Why We Started</span>
         <p>In a world filled with constant information, finding clarity has become harder than ever. There is no shortage of content, but there is a lack of direction.</p>
         <p>We didn&#8217;t want to create just another magazine. <strong>Get Inspired was built to simplify growth</strong> into something practical, structured, and easy to apply. Every issue is designed to cut through the noise and deliver what truly matters.</p>
       </div>
       <div class="about-col">
-        <p class="about-col-title">What You Receive Every Month</p>
+        <span class="about-col-title">What You Receive Every Month</span>
         <ul class="about-list">
           <li>A <strong>54-page premium digital magazine</strong></li>
           <li>Three focused segments covering <strong>health, wealth, and happiness</strong></li>
@@ -334,7 +339,7 @@ img{display:block;max-width:100%;}
     </div>
 
     <div class="about-pillars">
-      <p class="about-pillars-title">What Makes Get Inspired Different</p>
+      <span class="about-pillars-title">What Makes Get Inspired Different</span>
       <div class="pillars-grid">
         <div class="pillar">
           <span class="pillar-title">Curated, not crowded</span>
@@ -357,12 +362,13 @@ img{display:block;max-width:100%;}
 <!-- TEAM -->
 <section class="team-section">
   <div class="team-inner">
-    <p class="team-section-title">Meet the Founding Team</p>
+    <span class="team-section-title">Meet the Founding Team</span>
 
     <!-- Mouli Jayaraman -->
     <div class="creator-card">
       <div class="creator-photo-wrap">
-        <img class="creator-photo" src="Images/Mouli" alt="Mouli Jayaraman">
+        <!-- Replace with: <img class="creator-photo" src="Images/Mouli.jpg" alt="Mouli Jayaraman"> -->
+        <div class="creator-photo-placeholder">
           <span>MJ</span>
         </div>
       </div>
@@ -379,7 +385,8 @@ img{display:block;max-width:100%;}
     <!-- Septinda Jeevaa -->
     <div class="creator-card">
       <div class="creator-photo-wrap">
-        <img class="creator-photo" src="Images/Sep" alt="Septinda Jeevaa">
+        <!-- Replace with: <img class="creator-photo" src="Images/Sep.jpg" alt="Septinda Jeevaa"> -->
+        <div class="creator-photo-placeholder">
           <span>SJ</span>
         </div>
       </div>
@@ -396,7 +403,8 @@ img{display:block;max-width:100%;}
     <!-- Nandagopal -->
     <div class="creator-card">
       <div class="creator-photo-wrap">
-       <img class="creator-photo" src="Images/Nandhu" alt="Nandagopal">
+        <!-- Replace with: <img class="creator-photo" src="Images/Nandhu.jpg" alt="Nandagopal"> -->
+        <div class="creator-photo-placeholder">
           <span>NG</span>
         </div>
       </div>
@@ -458,13 +466,20 @@ img{display:block;max-width:100%;}
 </div>
 
 <script>
+// Cookie
 document.getElementById('cookieAccept').addEventListener('click', function() {
   document.getElementById('cookieBanner').style.display = 'none';
   document.querySelector('.chat-widget').style.bottom = '24px';
 });
-document.querySelectorAll('.site-nav a').forEach(function(a) {
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+// Nav active
+document.querySelectorAll('.site-nav a, .mobile-nav a').forEach(function(a) {
   a.addEventListener('click', function() {
-    document.querySelectorAll('.site-nav a').forEach(function(x) { x.classList.remove('active'); });
+    document.querySelectorAll('.site-nav a, .mobile-nav a').forEach(function(x) { x.classList.remove('active'); });
     this.classList.add('active');
   });
 });
