@@ -31,17 +31,41 @@ img{display:block;max-width:100%;}
 .site-nav li a.active,.site-nav li a:hover{border-bottom-color:#4C3B37;}
 
 /* ── HAMBURGER ── */
-.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;gap:5px;background:none;border:none;padding:0;position:absolute;right:20px;top:50%;transform:translateY(-50%);}
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;gap:5px;background:none;border:none;padding:0;flex-shrink:0;}
 .hamburger span{display:block;width:24px;height:2px;background:#151515;transition:all 0.3s ease;transform-origin:center;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-nav{display:none;flex-direction:column;background:#fff;border-top:1px solid rgba(76,59,55,0.1);}
-.mobile-nav.open{display:flex;}
-.mobile-nav li a{display:block;padding:16px 24px;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid rgba(76,59,55,0.07);}
+.mobile-nav{
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  bottom:88px;
+  right:16px;
+  z-index:9997;
+  background:#fff;
+  border:1px solid rgba(76,59,55,0.15);
+  border-radius:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.18);
+  overflow:hidden;
+  min-width:200px;
+  transform-origin:bottom right;
+  transform:scale(0.88);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.mobile-nav.open{
+  opacity:1;
+  transform:scale(1);
+  visibility:visible;
+  pointer-events:auto;
+}
+.mobile-nav li a{display:block;padding:14px 24px;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid rgba(76,59,55,0.07);}
 .mobile-nav li:last-child a{border-bottom:none;}
 .mobile-nav li a.active,.mobile-nav li a:hover{color:#4C3B37;background:rgba(76,59,55,0.04);}
-.nav-header-row{position:relative;display:flex;align-items:center;justify-content:center;}
+.mobile-header-row{display:none;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid rgba(76,59,55,0.07);}
 
 /* ── QUOTE BANNER ── */
 .quote-banner{background:rgb(76,59,55);padding:40px 20px;min-height:273px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
@@ -118,8 +142,7 @@ img{display:block;max-width:100%;}
 .cookie-btn:hover{opacity:0.88;}
 
 /* ── CHAT WIDGET ── */
-.chat-widget{position:fixed;bottom:76px;right:24px;width:52px;height:52px;border-radius:50%;background:#3D3D3D;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9998;box-shadow:0 4px 20px rgba(0,0,0,0.28);transition:transform 0.2s;}
-.chat-widget:hover{transform:scale(1.07);}
+
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
@@ -135,7 +158,7 @@ img{display:block;max-width:100%;}
   .site-header{padding:24px 0 0;}
   .logo-img{width:100px;height:100px;}
   .site-nav-wrap{display:none;}
-  .hamburger{display:flex;}
+  .fixed-hamburger{display:flex !important;}
 
   .quote-banner{padding:40px 24px;min-height:auto;}
   .quote-banner h1{font-size:clamp(18px,5vw,26px);}
@@ -162,8 +185,28 @@ img{display:block;max-width:100%;}
   .footer-links{flex-direction:column;gap:10px;align-items:center;}
   .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
   .cookie-btn{width:100%;}
-  .chat-widget{bottom:20px;right:16px;width:44px;height:44px;}
 }
+
+/* ── FIXED HAMBURGER (mobile bottom-right) ── */
+.fixed-hamburger{
+  display:none;
+  position:fixed;
+  bottom:24px;right:24px;
+  width:52px;height:52px;
+  border-radius:50%;
+  background:#4C3B37;
+  align-items:center;justify-content:center;
+  cursor:pointer;z-index:9998;
+  box-shadow:0 4px 20px rgba(0,0,0,0.28);
+  border:none;
+  flex-direction:column;gap:5px;
+  transition:transform 0.2s;
+}
+.fixed-hamburger:hover{transform:scale(1.07);}
+.fixed-hamburger span{display:block;width:20px;height:2px;background:#fff;transition:all 0.3s ease;transform-origin:center;}
+.fixed-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.fixed-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.fixed-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 </style>
 </head>
 <body>
@@ -331,10 +374,6 @@ img{display:block;max-width:100%;}
 </footer>
 
 <!-- CHAT WIDGET -->
-<div class="chat-widget">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-</div>
-
 <!-- COOKIE BANNER -->
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-text">
@@ -347,11 +386,33 @@ img{display:block;max-width:100%;}
 <script>
 document.getElementById('cookieAccept').addEventListener('click', function() {
   document.getElementById('cookieBanner').style.display = 'none';
-  document.querySelector('.chat-widget').style.bottom = '24px';
+  
 });
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('mobileNav').classList.toggle('open');
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileNav = document.getElementById('mobileNav');
+  var fixedBtn  = document.getElementById('fixedHamburger');
+  var headerBtn = document.getElementById('hamburger');
+
+  function toggleMenu() {
+    if (!mobileNav) return;
+    var isOpen = mobileNav.classList.toggle('open');
+    if (fixedBtn)  fixedBtn.classList.toggle('open',  isOpen);
+    if (headerBtn) headerBtn.classList.toggle('open', isOpen);
+  }
+
+  if (fixedBtn)  fixedBtn.addEventListener('click',  toggleMenu);
+  if (headerBtn) headerBtn.addEventListener('click', toggleMenu);
+
+  // Close menu when a nav link is clicked
+  if (mobileNav) {
+    mobileNav.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        if (fixedBtn)  fixedBtn.classList.remove('open');
+        if (headerBtn) headerBtn.classList.remove('open');
+      });
+    });
+  }
 });
 document.querySelectorAll('.site-nav a,.mobile-nav a').forEach(function(a) {
   a.addEventListener('click', function() {
@@ -360,5 +421,8 @@ document.querySelectorAll('.site-nav a,.mobile-nav a').forEach(function(a) {
   });
 });
 </script>
+<button class="fixed-hamburger" id="fixedHamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
 </body>
 </html>
