@@ -487,10 +487,9 @@ document.getElementById('cookieAccept').addEventListener('click', function() {
   
 });
 // Hamburger
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('mobileNav').classList.toggle('open');
-});
+function toggleMenu(){var nav=document.getElementById('mobileNav');var fh=document.getElementById('fixedHamburger');var hh=document.getElementById('hamburger');nav.classList.toggle('open');fh&&fh.classList.toggle('open');hh&&hh.classList.toggle('open');}
+document.getElementById('hamburger')&&document.getElementById('hamburger').addEventListener('click',toggleMenu);
+document.getElementById('fixedHamburger')&&document.getElementById('fixedHamburger').addEventListener('click',toggleMenu);
 // Nav active
 document.querySelectorAll('.site-nav a, .mobile-nav a').forEach(function(a) {
   a.addEventListener('click', function() {
