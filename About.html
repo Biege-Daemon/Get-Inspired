@@ -486,10 +486,32 @@ document.getElementById('cookieAccept').addEventListener('click', function() {
   document.getElementById('cookieBanner').style.display = 'none';
   
 });
-// Hamburger
-function toggleMenu(){var nav=document.getElementById('mobileNav');var fh=document.getElementById('fixedHamburger');var hh=document.getElementById('hamburger');nav.classList.toggle('open');fh&&fh.classList.toggle('open');hh&&hh.classList.toggle('open');}
-document.getElementById('hamburger')&&document.getElementById('hamburger').addEventListener('click',toggleMenu);
-document.getElementById('fixedHamburger')&&document.getElementById('fixedHamburger').addEventListener('click',toggleMenu);
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileNav = document.getElementById('mobileNav');
+  var fixedBtn  = document.getElementById('fixedHamburger');
+  var headerBtn = document.getElementById('hamburger');
+
+  function toggleMenu() {
+    if (!mobileNav) return;
+    var isOpen = mobileNav.classList.toggle('open');
+    if (fixedBtn)  fixedBtn.classList.toggle('open',  isOpen);
+    if (headerBtn) headerBtn.classList.toggle('open', isOpen);
+  }
+
+  if (fixedBtn)  fixedBtn.addEventListener('click',  toggleMenu);
+  if (headerBtn) headerBtn.addEventListener('click', toggleMenu);
+
+  // Close menu when a nav link is clicked
+  if (mobileNav) {
+    mobileNav.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        if (fixedBtn)  fixedBtn.classList.remove('open');
+        if (headerBtn) headerBtn.classList.remove('open');
+      });
+    });
+  }
+});
 // Nav active
 document.querySelectorAll('.site-nav a, .mobile-nav a').forEach(function(a) {
   a.addEventListener('click', function() {
