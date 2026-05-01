@@ -48,39 +48,7 @@ img{display:block;max-width:100%;}
 .checkout-hero h1{font-family:'Fjalla One',arial,sans-serif;font-size:36px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:1.5px;line-height:1.1;}
 
 /* ── MAIN LAYOUT ── */
-.checkout-wrap{max-width:960px;margin:0 auto;padding:56px 40px 100px;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:start;}
-
-/* ── SECTION HEAD ── */
-.section-head{margin-bottom:24px;}
-.section-head h2{font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#4C3B37;display:flex;align-items:center;gap:12px;}
-.section-head h2::after{content:'';flex:1;height:1px;background:rgba(76,59,55,0.15);}
-
-/* ── GIFT DROPDOWN ── */
-.gift-select-wrap{position:relative;margin-bottom:8px;}
-.gift-select-wrap::after{content:'↓';position:absolute;right:16px;top:50%;transform:translateY(-50%);color:rgba(76,59,55,0.5);font-size:13px;pointer-events:none;font-family:'Quicksand',sans-serif;}
-.gift-select{width:100%;background:#F6F3F2;border:1px solid rgba(76,59,55,0.2);color:#151515;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:600;padding:14px 40px 14px 16px;outline:none;appearance:none;-webkit-appearance:none;border-radius:0;cursor:pointer;transition:border-color 0.2s;letter-spacing:0.5px;}
-.gift-select:focus{border-color:#4C3B37;}
-.gift-select option{background:#fff;color:#151515;font-weight:400;}
-.gift-select option:disabled{color:rgba(21,21,21,0.35);}
-
-/* Gift restrict notice */
-.gift-restrict{
-  margin-top:10px;
-  font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;
-  color:rgba(76,59,55,0.6);letter-spacing:0.5px;
-  display:none;
-  align-items:center;gap:6px;
-}
-.gift-restrict.visible{display:flex;}
-.gift-restrict::before{content:'ⓘ';font-size:14px;}
-
-/* Gift reveal */
-.gift-reveal{margin-top:16px;padding:20px;border:1px solid rgba(76,59,55,0.15);background:#F6F3F2;display:none;align-items:flex-start;gap:16px;}
-.gift-reveal.visible{display:flex;}
-.gift-reveal-icon{font-size:24px;width:44px;height:44px;background:#fff;border:1px solid rgba(76,59,55,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.gift-reveal-title{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;color:#151515;letter-spacing:0.5px;margin-bottom:4px;}
-.gift-reveal-desc{font-family:'Quicksand',sans-serif;font-size:13px;font-weight:400;color:rgb(94,94,94);line-height:1.6;}
-.gift-reveal-badge{display:inline-block;margin-top:8px;font-family:'Quicksand',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 10px;background:#4C3B37;color:#fff;}
+.checkout-wrap{max-width:520px;margin:0 auto;padding:56px 40px 100px;}
 
 /* ── ORDER SUMMARY ── */
 .order-summary{position:sticky;top:40px;background:#F6F3F2;border:1px solid rgba(76,59,55,0.12);padding:32px 28px;}
@@ -140,9 +108,24 @@ img{display:block;max-width:100%;}
 .cookie-btn{background:#4C3B37;color:#fff;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 30px;border:none;cursor:pointer;flex-shrink:0;transition:opacity 0.2s;white-space:nowrap;}
 .cookie-btn:hover{opacity:0.88;}
 
+/* ── GIFT SECTION inside summary ── */
+.gift-divider{height:1px;background:rgba(76,59,55,0.12);margin:20px 0;}
+
+.gift-included{padding:14px 16px;background:#fff;border:1px solid rgba(76,59,55,0.15);margin-bottom:4px;}
+.gift-included-row{display:flex;justify-content:space-between;align-items:center;}
+.gift-included-name{font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;color:#151515;}
+.gift-included-tag{font-family:'Quicksand',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 10px;background:#4C3B37;color:#fff;}
+
+.gift-upsell{
+  margin-top:12px;padding:12px 14px;
+  background:rgba(76,59,55,0.04);
+  border-left:2px solid #4C3B37;
+}
+.gift-upsell p{font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;color:rgba(76,59,55,0.75);line-height:1.6;}
+.gift-upsell strong{color:#4C3B37;}
+
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
-  .checkout-wrap{grid-template-columns:1fr;gap:40px;padding:40px 40px 80px;}
   .order-summary{position:static;}
 }
 @media(max-width:768px){
@@ -153,7 +136,7 @@ img{display:block;max-width:100%;}
   .fixed-hamburger{display:flex !important;}
   .checkout-hero{padding:36px 24px 32px;}
   .checkout-hero h1{font-size:clamp(22px,6vw,32px);}
-  .checkout-wrap{padding:32px 24px 80px;gap:32px;}
+  .checkout-wrap{padding:32px 24px 80px;}
   .site-footer{padding:40px 24px 32px;}
   .footer-links{flex-direction:column;gap:10px;align-items:center;}
   .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
@@ -197,70 +180,19 @@ img{display:block;max-width:100%;}
 
 <main class="checkout-wrap">
 
-  <!-- LEFT: Gift selection -->
-  <div>
-    <div class="section-head">
-      <h2>Choose Your Free Gift</h2>
-    </div>
-
-    <div class="gift-select-wrap">
-      <select class="gift-select" id="giftSelect" onchange="handleGiftSelect()">
-        <option value="">— Select a gift with your subscription —</option>
-        <option value="wheel">Wheel of Life Assessment</option>
-        <option value="ebook">Think Like a Winner E-book</option>
-        <option value="both" id="bothOption">Both Gifts (Half Yearly &amp; Annual only)</option>
-      </select>
-    </div>
-
-    <!-- Restriction notice -->
-    <div class="gift-restrict" id="giftRestrict">
-      Both Gifts are available on Half Yearly &amp; Annual plans only. Please upgrade your plan or choose a single gift.
-    </div>
-
-    <!-- Reveal cards -->
-    <div class="gift-reveal" id="reveal-wheel">
-      <div class="gift-reveal-icon">&#9711;</div>
-      <div>
-        <div class="gift-reveal-title">Wheel of Life Assessment</div>
-        <div class="gift-reveal-desc">A self-assessment to discover where you truly stand today across 8 key life areas — health, wealth, relationships, and more.</div>
-        <span class="gift-reveal-badge">Included Free</span>
-      </div>
-    </div>
-
-    <div class="gift-reveal" id="reveal-ebook">
-      <div class="gift-reveal-icon">&#9724;</div>
-      <div>
-        <div class="gift-reveal-title">Think Like a Winner</div>
-        <div class="gift-reveal-desc">50 powerful life-changing ideas used by the world's most successful people. A free e-book to shift your mindset.</div>
-        <span class="gift-reveal-badge">Included Free</span>
-      </div>
-    </div>
-
-    <div class="gift-reveal" id="reveal-both">
-      <div class="gift-reveal-icon">&#10022;</div>
-      <div>
-        <div class="gift-reveal-title">Both Gifts</div>
-        <div class="gift-reveal-desc">Get the Wheel of Life Assessment and Think Like a Winner e-book together — available on Half Yearly &amp; Annual plans.</div>
-        <span class="gift-reveal-badge">Included Free</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT: Order Summary -->
   <aside class="order-summary">
     <p class="summary-title">Order Summary</p>
     <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
 
-    <!-- Plan badge -->
     <span class="plan-badge" id="planBadge">Starter Plan</span>
 
     <div class="plan-select-wrap">
       <label class="plan-field-label">Your Plan</label>
       <select class="plan-select" id="planSelect" onchange="updateSummary()">
-        <option value="199"  data-key="monthly"    data-label="Starter Plan"    data-link="YOUR_MONTHLY_PAYMENT_LINK_HERE">Monthly — ₹199</option>
-        <option value="540"  data-key="quarterly"  data-label="Growth Plan"     data-link="YOUR_QUARTERLY_PAYMENT_LINK_HERE">Quarterly — ₹540</option>
-        <option value="900"  data-key="halfyearly" data-label="Best Value"      data-link="YOUR_HALFYEARLY_PAYMENT_LINK_HERE" selected>Half Yearly — ₹900</option>
-        <option value="1799" data-key="annual"     data-label="Best Deal"       data-link="YOUR_ANNUAL_PAYMENT_LINK_HERE">Annual — ₹1,799</option>
+        <option value="199"  data-key="monthly"    data-label="Starter Plan" data-link="YOUR_MONTHLY_PAYMENT_LINK_HERE">Monthly — ₹199</option>
+        <option value="540"  data-key="quarterly"  data-label="Growth Plan"  data-link="YOUR_QUARTERLY_PAYMENT_LINK_HERE">Quarterly — ₹540</option>
+        <option value="900"  data-key="halfyearly" data-label="Best Value"   data-link="YOUR_HALFYEARLY_PAYMENT_LINK_HERE" selected>Half Yearly — ₹900</option>
+        <option value="1799" data-key="annual"     data-label="Best Deal"    data-link="YOUR_ANNUAL_PAYMENT_LINK_HERE">Annual — ₹1,799</option>
       </select>
     </div>
 
@@ -269,15 +201,14 @@ img{display:block;max-width:100%;}
         <span class="summary-line-label">Subscription</span>
         <span class="summary-line-val" id="summaryBase">₹900</span>
       </div>
-      <div class="summary-line gift-line" id="giftLine" style="display:none;">
-        <span class="summary-line-label">Free Gift</span>
-        <span class="summary-line-val">Included</span>
-      </div>
       <div class="summary-line">
         <span class="summary-line-label">GST (18%)</span>
         <span class="summary-line-val" id="summaryGst">₹162</span>
       </div>
     </div>
+
+    <!-- Gift section — rendered by JS based on plan -->
+    <div class="gift-section" id="giftSection"></div>
 
     <div class="summary-total">
       <span class="summary-total-label">Total</span>
@@ -345,169 +276,129 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// ── Plan data
-var planData = {
-  'monthly':    { value: 199,  label: 'Starter Plan',  badgeClass: 'monthly',    bothAllowed: false },
-  'quarterly':  { value: 540,  label: 'Growth Plan',   badgeClass: 'quarterly',  bothAllowed: false },
-  'halfyearly': { value: 900,  label: 'Best Value',    badgeClass: 'halfyearly', bothAllowed: true  },
-  'annual':     { value: 1799, label: 'Best Deal',     badgeClass: 'annual',     bothAllowed: true  }
+// ── Plan config
+var planConfig = {
+  monthly: {
+    value: 199, label: 'Starter Plan', badgeClass: 'monthly',
+    gifts: [],
+    upsell: 'Upgrade to <strong>Quarterly</strong> or above to receive free bonus downloads with your subscription.'
+  },
+  quarterly: {
+    value: 540, label: 'Growth Plan', badgeClass: 'quarterly',
+    gifts: ['Wheel of Life Assessment'],
+    upsell: 'Upgrade to <strong>Half Yearly or Annual</strong> to also get the Think Like a Winner e-book.'
+  },
+  halfyearly: {
+    value: 900, label: 'Best Value', badgeClass: 'halfyearly',
+    gifts: ['Wheel of Life Assessment', 'Think Like a Winner E-book'],
+    upsell: null
+  },
+  annual: {
+    value: 1799, label: 'Best Deal', badgeClass: 'annual',
+    gifts: ['Wheel of Life Assessment', 'Think Like a Winner E-book'],
+    upsell: null
+  }
 };
 
-// ── Bonus download file paths — replace with your actual file URLs
+// ── Bonus file paths — replace with your actual paths/URLs
 var bonusFiles = {
-  'wheel': 'Files/Wheel-of-Life-Assessment.pdf',   // replace with your actual file path/URL
-  'ebook': 'Files/Think-Like-a-Winner.pdf',         // replace with your actual file path/URL
-  'both':  ['Files/Wheel-of-Life-Assessment.pdf', 'Files/Think-Like-a-Winner.pdf']
+  'Wheel of Life Assessment': 'Files/Wheel-of-Life-Assessment.pdf',
+  'Think Like a Winner E-book': 'Files/Think-Like-a-Winner.pdf'
 };
 
 function fmt(n) { return '₹' + n.toLocaleString('en-IN'); }
 
-function getCurrentPlanKey() {
+function getCurrentKey() {
   var sel = document.getElementById('planSelect');
   return sel.options[sel.selectedIndex].getAttribute('data-key');
 }
 
+function renderGiftSection(key) {
+  var plan    = planConfig[key];
+  var section = document.getElementById('giftSection');
+  var html    = '<div class="gift-divider"></div>';
+
+  if (plan.gifts.length > 0) {
+    plan.gifts.forEach(function(g) {
+      html += '<div class="gift-included">'
+            +   '<div class="gift-included-row">'
+            +     '<span class="gift-included-name">' + g + '</span>'
+            +     '<span class="gift-included-tag">Free</span>'
+            +   '</div>'
+            + '</div>';
+    });
+  }
+
+  if (plan.upsell) {
+    html += '<div class="gift-upsell"><p>' + plan.upsell + '</p></div>';
+  }
+
+  section.innerHTML = html;
+}
+
 function updateSummary() {
-  var sel      = document.getElementById('planSelect');
-  var opt      = sel.options[sel.selectedIndex];
-  var val      = parseInt(opt.value);
-  var key      = opt.getAttribute('data-key');
-  var label    = opt.getAttribute('data-label');
-  var plan     = planData[key];
-  var gst      = Math.round(val * 0.18);
+  var key  = getCurrentKey();
+  var plan = planConfig[key];
+  var gst  = Math.round(plan.value * 0.18);
 
-  document.getElementById('summaryBase').textContent  = fmt(val);
+  document.getElementById('summaryBase').textContent  = fmt(plan.value);
   document.getElementById('summaryGst').textContent   = fmt(gst);
-  document.getElementById('summaryTotal').textContent = fmt(val + gst);
+  document.getElementById('summaryTotal').textContent = fmt(plan.value + gst);
 
-  // Update badge
   var badge = document.getElementById('planBadge');
-  badge.textContent  = label;
-  badge.className    = 'plan-badge ' + plan.badgeClass;
+  badge.textContent = plan.label;
+  badge.className   = 'plan-badge ' + plan.badgeClass;
 
-  // Enforce gift restriction
-  enforceBothGiftRule(plan.bothAllowed);
+  renderGiftSection(key);
 }
 
-function enforceBothGiftRule(bothAllowed) {
-  var bothOpt    = document.getElementById('bothOption');
-  var giftSel    = document.getElementById('giftSelect');
-  var restrict   = document.getElementById('giftRestrict');
-
-  if (!bothAllowed) {
-    // Disable the "both" option
-    bothOpt.disabled = true;
-    // If user had "both" selected, reset to blank
-    if (giftSel.value === 'both') {
-      giftSel.value = '';
-      handleGiftSelect();
-      restrict.classList.add('visible');
-    } else {
-      restrict.classList.remove('visible');
-    }
-  } else {
-    bothOpt.disabled = false;
-    restrict.classList.remove('visible');
-  }
-}
-
-function handleGiftSelect() {
-  var val = document.getElementById('giftSelect').value;
-
-  // Hide all reveal cards
-  ['wheel', 'ebook', 'both'].forEach(function(k) {
-    document.getElementById('reveal-' + k).classList.remove('visible');
-  });
-  // Show selected card
-  if (val) document.getElementById('reveal-' + val).classList.add('visible');
-
-  // Show/hide gift line in summary
-  document.getElementById('giftLine').style.display = val ? 'flex' : 'none';
-
-  // Hide restriction notice if user picked something valid
-  if (val !== 'both') {
-    document.getElementById('giftRestrict').classList.remove('visible');
-  }
-}
-
-// ── Trigger download of bonus files
-function triggerDownload(url, filename) {
+// ── Trigger download
+function triggerDownload(url) {
   var a = document.createElement('a');
-  a.href     = url;
-  a.download = filename || url.split('/').pop();
+  a.href = url; a.download = url.split('/').pop();
   a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
 }
 
-function downloadBonuses(giftKey) {
-  var files = bonusFiles[giftKey];
-  if (!files) return;
-  if (Array.isArray(files)) {
-    // Stagger downloads slightly so browsers don't block the second one
-    files.forEach(function(url, i) {
-      setTimeout(function() { triggerDownload(url); }, i * 800);
-    });
-  } else {
-    triggerDownload(files);
-  }
-}
-
-// ── Pay button
+// ── Pay
 function handlePay() {
-  var gift = document.getElementById('giftSelect').value;
-  if (!gift) {
-    alert('Please choose a free gift before proceeding.');
-    return;
-  }
-
   var sel  = document.getElementById('planSelect');
   var opt  = sel.options[sel.selectedIndex];
   var link = opt.getAttribute('data-link');
-
   if (!link || link.indexOf('YOUR_') === 0) {
     alert('Payment link not configured yet. Please add the link in the code.');
     return;
   }
-
-  // Store the chosen gift in sessionStorage so it survives the redirect back
-  sessionStorage.setItem('pendingGift', gift);
-
+  sessionStorage.setItem('pendingGiftKey', getCurrentKey());
   window.location.href = link;
 }
 
-// ── Auto-download after successful payment
-// Your payment provider should redirect back to Cart.html?payment=success
-// (or whatever success URL you configure — just add ?payment=success to the return URL)
+// ── Auto-download after payment return (?payment=success)
 (function checkPaymentReturn() {
   var params = new URLSearchParams(window.location.search);
-  if (params.get('payment') === 'success') {
-    var gift = sessionStorage.getItem('pendingGift');
-    if (gift) {
-      sessionStorage.removeItem('pendingGift');
-      // Small delay to let the page load fully
-      setTimeout(function() {
-        downloadBonuses(gift);
-      }, 1200);
-    }
-  }
+  if (params.get('payment') !== 'success') return;
+  var key = sessionStorage.getItem('pendingGiftKey');
+  if (!key) return;
+  sessionStorage.removeItem('pendingGiftKey');
+  var gifts = planConfig[key] ? planConfig[key].gifts : [];
+  gifts.forEach(function(g, i) {
+    var url = bonusFiles[g];
+    if (url) setTimeout(function() { triggerDownload(url); }, i * 800);
+  });
 })();
 
-// ── Read ?plan= from URL and pre-select matching plan
+// ── Read ?plan= from URL and pre-select
 (function syncPlanFromURL() {
-  var params  = new URLSearchParams(window.location.search);
-  var planKey = params.get('plan');
+  var planKey = new URLSearchParams(window.location.search).get('plan');
   if (!planKey) return;
-
   var sel = document.getElementById('planSelect');
   for (var i = 0; i < sel.options.length; i++) {
     if (sel.options[i].getAttribute('data-key') === planKey) {
-      sel.selectedIndex = i;
-      break;
+      sel.selectedIndex = i; break;
     }
   }
-  updateSummary();
 })();
 
 // ── Init
