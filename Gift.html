@@ -13,10 +13,8 @@ body{font-family:'Quicksand',sans-serif;color:#151515;background:#fff;overflow-x
 a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 img{display:block;max-width:100%;}
-
 .ann-bar{background:#4C3B37;padding:4px 0;text-align:center;}
 .ann-bar p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:#fff;text-transform:uppercase;letter-spacing:2px;line-height:24px;padding:0 40px;}
-
 .site-header{background:#fff;text-align:center;padding:56px 0 0;border-bottom:1px solid rgba(76,59,55,0.1);}
 .logo-link{display:inline-block;}
 .logo-img{width:140px;height:140px;object-fit:contain;margin:0 auto;}
@@ -24,7 +22,6 @@ img{display:block;max-width:100%;}
 .site-nav{display:flex;justify-content:center;gap:48px;padding:24px 40px;}
 .site-nav li a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2.996px;line-height:24px;display:inline-block;padding:10px 0 2px;border-bottom:1px solid transparent;margin-bottom:-2px;transition:border-color 0.15s,color 0.15s;}
 .site-nav li a:hover{border-bottom-color:#4C3B37;color:#4C3B37;}
-
 .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;gap:5px;background:none;border:none;padding:0;flex-shrink:0;}
 .hamburger span{display:block;width:24px;height:2px;background:#151515;transition:all 0.3s ease;transform-origin:center;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -42,74 +39,43 @@ img{display:block;max-width:100%;}
 .fixed-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .fixed-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .fixed-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-/* ── HERO ── */
 .gift-hero{padding:72px 40px 56px;text-align:center;position:relative;}
 .gift-hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:48px;height:1px;background:#4C3B37;}
 .gift-eyebrow{font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:4px;color:rgba(76,59,55,0.5);margin-bottom:16px;display:block;}
 .gift-hero h1{font-family:'Fjalla One',arial,sans-serif;font-size:42px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2px;line-height:1.1;margin-bottom:16px;}
 .gift-hero p{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:400;color:rgb(94,94,94);max-width:440px;margin:0 auto;line-height:1.7;}
-
-/* ── REDEEM CARD ── */
 .redeem-wrap{max-width:520px;margin:64px auto 100px;padding:0 40px;}
 .redeem-card{background:#F6F3F2;border:1px solid rgba(76,59,55,0.12);padding:40px;}
-
 .ornament{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:32px;}
 .ornament-line{flex:1;height:1px;background:rgba(76,59,55,0.12);}
 .ornament-diamond{width:5px;height:5px;background:#4C3B37;transform:rotate(45deg);flex-shrink:0;}
-
 .redeem-label{font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:rgba(76,59,55,0.6);display:block;margin-bottom:10px;}
-
 .code-row{display:flex;gap:8px;}
-.code-input{
-  flex:1;
-  font-family:'Quicksand',sans-serif;font-size:16px;font-weight:600;
-  color:#151515;letter-spacing:2px;text-transform:uppercase;
-  background:#fff;border:1px solid rgba(76,59,55,0.25);
-  padding:14px 18px;outline:none;
-  transition:border-color 0.2s;
-  border-radius:0;
-}
+.code-input{flex:1;font-family:'Quicksand',sans-serif;font-size:16px;font-weight:600;color:#151515;letter-spacing:2px;text-transform:uppercase;background:#fff;border:1px solid rgba(76,59,55,0.25);padding:14px 18px;outline:none;transition:border-color 0.2s;border-radius:0;}
 .code-input::placeholder{font-weight:400;letter-spacing:1px;text-transform:none;color:rgba(21,21,21,0.3);}
 .code-input:focus{border-color:#4C3B37;}
-.code-btn{
-  font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;
-  text-transform:uppercase;letter-spacing:2.5px;
-  background:#4C3B37;color:#fff;
-  border:1px solid #4C3B37;padding:14px 22px;
-  cursor:pointer;transition:background 0.2s,letter-spacing 0.2s;
-  white-space:nowrap;flex-shrink:0;border-radius:0;
-}
+.code-btn{font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;background:#4C3B37;color:#fff;border:1px solid #4C3B37;padding:14px 22px;cursor:pointer;transition:background 0.2s,letter-spacing 0.2s;white-space:nowrap;flex-shrink:0;border-radius:0;}
 .code-btn:hover{background:#5c4840;letter-spacing:3px;}
-
-/* Status messages */
 .redeem-status{margin-top:16px;min-height:20px;}
-.status-msg{
-  font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;
-  display:none;align-items:center;gap:8px;line-height:1.5;
-}
+.status-msg{font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;display:none;align-items:center;gap:8px;line-height:1.5;}
 .status-msg.visible{display:flex;}
 .status-error{color:#c0392b;}
 .status-error::before{content:'✕';font-size:14px;flex-shrink:0;}
 .status-loading{color:rgba(76,59,55,0.6);}
 .status-loading::before{content:'○';font-size:14px;flex-shrink:0;}
-
-/* Success state */
-.redeem-success{
-  display:none;margin-top:24px;padding:20px;
-  background:#fff;border:1px solid rgba(76,59,55,0.15);
-  text-align:center;
-}
+.redeem-success{display:none;margin-top:24px;padding:20px;background:#fff;border:1px solid rgba(76,59,55,0.15);text-align:center;}
 .redeem-success.visible{display:block;}
 .success-icon{font-size:28px;margin-bottom:10px;}
 .success-title{font-family:'Fjalla One',arial,sans-serif;font-size:18px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
 .success-desc{font-family:'Quicksand',sans-serif;font-size:13px;font-weight:400;color:rgb(94,94,94);line-height:1.6;margin-bottom:16px;}
 .success-manual{font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;color:rgba(76,59,55,0.5);margin-top:10px;}
 .success-manual a{color:#4C3B37;text-decoration:underline;}
-
 .redeem-note{margin-top:20px;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:400;color:rgba(76,59,55,0.4);text-align:center;line-height:1.6;}
-
-/* ── FOOTER ── */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid rgba(0,0,0,0.1);box-shadow:0 -2px 16px rgba(0,0,0,0.07);padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;z-index:9999;}
+.cookie-text strong{font-family:'Quicksand',sans-serif;font-size:15px;font-weight:700;color:#1B1B1B;display:block;margin-bottom:3px;}
+.cookie-text p{font-family:'Quicksand',sans-serif;font-size:14px;color:#555;line-height:1.5;max-width:760px;}
+.cookie-btn{background:#4C3B37;color:#fff;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 30px;border:none;cursor:pointer;flex-shrink:0;transition:opacity 0.2s;white-space:nowrap;}
+.cookie-btn:hover{opacity:0.88;}
 .site-footer{background:#F6F3F2;padding:56px 0 40px;text-align:center;border-top:1px solid rgba(76,59,55,0.08);}
 .footer-socials{display:flex;justify-content:center;gap:20px;margin-bottom:24px;}
 .footer-socials a{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:opacity 0.2s;flex-shrink:0;}
@@ -119,7 +85,6 @@ img{display:block;max-width:100%;}
 .footer-links{display:flex;justify-content:center;gap:32px;}
 .footer-links a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#4C3B37;}
 .footer-links a:hover{text-decoration:underline;}
-
 @media(max-width:768px){
   .ann-bar p{font-size:11px;letter-spacing:0.5px;padding:0 16px;}
   .site-header{padding:24px 0 0;}
@@ -177,33 +142,27 @@ img{display:block;max-width:100%;}
 
 <div class="redeem-wrap">
   <div class="redeem-card">
-
     <div class="ornament">
       <div class="ornament-line"></div>
       <div class="ornament-diamond"></div>
       <div class="ornament-line"></div>
     </div>
-
     <label class="redeem-label" for="giftCodeInput">Your Gift Code</label>
     <div class="code-row">
       <input class="code-input" id="giftCodeInput" type="text" placeholder="Enter code here" maxlength="32" autocomplete="off" spellcheck="false">
       <button class="code-btn" onclick="redeemCode()">Redeem</button>
     </div>
-
     <div class="redeem-status">
-      <div class="status-msg status-error"  id="statusError"></div>
+      <div class="status-msg status-error" id="statusError"></div>
       <div class="status-msg status-loading" id="statusLoading">Verifying your code...</div>
     </div>
-
     <div class="redeem-success" id="redeemSuccess">
       <div class="success-icon">&#10003;</div>
       <div class="success-title">Download Starting</div>
       <div class="success-desc" id="successDesc">Your gift is on its way. Check your downloads folder.</div>
       <p class="success-manual" id="successManual"></p>
     </div>
-
-    <p class="redeem-note">Codes are case-insensitive and single-use. Contact us at <a href="Contact.html" style="color:#4C3B37;">hello@mygetinspired.com</a> if you have any trouble.</p>
-
+    <p class="redeem-note">Codes are case-insensitive. Contact us at <a href="Contact.html" style="color:#4C3B37;">hello@mygetinspired.com</a> if you have any trouble.</p>
   </div>
 </div>
 
@@ -222,13 +181,19 @@ img{display:block;max-width:100%;}
 
 <button class="fixed-hamburger" id="fixedHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 
+<!-- FIX 1: Cookie banner was missing — its absence crashed the JS before any download code could run -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text"><strong>This website uses cookies.</strong><p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p></div>
+  <button class="cookie-btn" id="cookieAccept">Accept</button>
+</div>
+
 <script>
-// ── Cookie
+// Cookie
 document.getElementById('cookieAccept').addEventListener('click', function() {
   document.getElementById('cookieBanner').style.display = 'none';
 });
 
-// ── Hamburger
+// Hamburger
 document.addEventListener('DOMContentLoaded', function() {
   var mobileNav = document.getElementById('mobileNav');
   var fixedBtn  = document.getElementById('fixedHamburger');
@@ -252,26 +217,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// ── Gift code map
-// Replace the placeholder URLs with your actual file links when ready
+// FIX 2: Files now prefixed with "Files/" — make sure both files exist at that path in your repo
 var giftCodes = {
-  // Format: 'CODE': { name: 'Display name', files: ['url1', 'url2'] }
-  // Single file example:
-  // 'WHEEL2024': { name: 'Wheel of Life Assessment', files: ['YOUR_WHEEL_OF_LIFE_FILE_URL_HERE'] },
-  // Two files example:
-  // 'BOTH2024':  { name: 'Both Bonuses', files: ['YOUR_WHEEL_OF_LIFE_FILE_URL_HERE', 'YOUR_THINK_LIKE_A_WINNER_FILE_URL_HERE'] },
-
   'WHEEL2024': {
     name: 'Wheel of Life Assessment',
-    files: ['Wheel of Life_Assessment_Balanced Life_V1.xlsx']
+    files: ['Files/Wheel of Life_Assessment_Balanced Life_V1.xlsx']
   },
   'WINNER2024': {
     name: 'Think Like a Winner E-book',
-    files: ['Think like a winner - 50 Ideas To Change Your Life e-book (1).pdf']
+    files: ['Files/Think like a winner - 50 Ideas To Change Your Life e-book (1).pdf']
   },
   'BOTH2024': {
     name: 'Both Bonuses',
-    files: ['Wheel of Life_Assessment_Balanced Life_V1.xlsx', 'Think like a winner - 50 Ideas To Change Your Life e-book (1).pdf']
+    files: [
+      'Files/Wheel of Life_Assessment_Balanced Life_V1.xlsx',
+      'Files/Think like a winner - 50 Ideas To Change Your Life e-book (1).pdf'
+    ]
   }
 };
 
@@ -287,51 +248,40 @@ function showStatus(type, msg) {
   }
 }
 
-function triggerDownload(url, filename) {
+function triggerDownload(url) {
   var a = document.createElement('a');
   a.href = url;
-  a.download = filename || url.split('/').pop() || 'gift';
+  a.download = decodeURIComponent(url.split('/').pop()) || 'gift';
   a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
-  document.body.removeChild(a);
+  setTimeout(function() { document.body.removeChild(a); }, 200);
 }
 
 function redeemCode() {
   var raw  = document.getElementById('giftCodeInput').value.trim().toUpperCase();
   var succ = document.getElementById('redeemSuccess');
 
-  // Reset state
   succ.classList.remove('visible');
   showStatus('', '');
 
-  if (!raw) {
-    showStatus('error', 'Please enter a gift code.');
-    return;
-  }
+  if (!raw) { showStatus('error', 'Please enter a gift code.'); return; }
 
   var gift = giftCodes[raw];
-  if (!gift) {
-    showStatus('error', 'That code is not recognised. Please check and try again.');
-    return;
-  }
+  if (!gift) { showStatus('error', 'That code is not recognised. Please check and try again.'); return; }
 
   showStatus('loading', '');
 
-  // Small delay so the loading message is visible
   setTimeout(function() {
     showStatus('', '');
 
-    // Trigger downloads staggered
     gift.files.forEach(function(url, i) {
       setTimeout(function() { triggerDownload(url); }, i * 900);
     });
 
-    // Show success card
     document.getElementById('successDesc').textContent =
       gift.name + ' is downloading now. Check your downloads folder.';
 
-    // Manual fallback links if multiple files
     if (gift.files.length > 1) {
       document.getElementById('successManual').innerHTML =
         'If downloads didn\'t start, <a href="' + gift.files[0] + '" download>download file 1</a> and <a href="' + gift.files[1] + '" download>download file 2</a> manually.';
@@ -341,13 +291,10 @@ function redeemCode() {
     }
 
     succ.classList.add('visible');
-
-    // Clear the input
     document.getElementById('giftCodeInput').value = '';
   }, 600);
 }
 
-// Allow Enter key to submit
 document.getElementById('giftCodeInput').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') redeemCode();
 });
