@@ -81,8 +81,6 @@ img{display:block;max-width:100%;}
 .footer-links{display:flex;justify-content:center;gap:32px;}
 .footer-links a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#4C3B37;}
 .footer-links a:hover{text-decoration:underline;}
-
-
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   .ann-bar p{font-size:11px;letter-spacing:0.5px;padding:0 16px;}
@@ -98,9 +96,7 @@ img{display:block;max-width:100%;}
   .comic-image{height:auto;min-height:180px;background-size:contain;background-color:#f0ede9;}
   .site-footer{padding:40px 24px 32px;}
   .footer-links{flex-direction:column;gap:10px;align-items:center;}
-  .cookie-banner{flex-direction:column;align-items:flex-start;gap:16px;padding:16px 20px;}
-  .cookie-btn{width:100%;}
-}
+  }
 
 /* ── FIXED HAMBURGER (mobile bottom-right) ── */
 .fixed-hamburger{
@@ -172,9 +168,8 @@ img{display:block;max-width:100%;}
     <a href="https://mygetinspired.com/terms-and-conditions">Terms and Conditions</a>
   </div>
 </footer>
-
+</div>
 <script>
-document.getElementById('cookieAccept').addEventListener('click', function() { document.getElementById('cookieBanner').style.display='none'; });
 document.addEventListener('DOMContentLoaded', function() {
   var mobileNav = document.getElementById('mobileNav');
   var fixedBtn  = document.getElementById('fixedHamburger');
