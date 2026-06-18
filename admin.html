@@ -8,11 +8,6 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{font-size:16px;}
-body{font-family:'Quicksand',sans-serif;background:#0f0f0f;color:#e8e8e8;min-height:100vh;}
-a{text-decoration:none;color:inherit;}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{font-size:16px;}
 body{font-family:'Quicksand',sans-serif;background:#F6F3F2;color:#151515;min-height:100vh;}
 a{text-decoration:none;color:inherit;}
 
@@ -59,10 +54,10 @@ a{text-decoration:none;color:inherit;}
 .editor-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:rgba(0,0,0,0.35);margin-bottom:24px;display:block;}
 .field{margin-bottom:24px;}
 .field-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:rgba(0,0,0,0.55);display:block;margin-bottom:8px;}
+.field-hint{color:rgba(0,0,0,0.35);font-size:10px;text-transform:none;letter-spacing:0;font-weight:400;}
 .field-input{width:100%;background:#fff;border:1px solid rgba(0,0,0,0.15);color:#151515;font-family:'Quicksand',sans-serif;font-size:15px;font-weight:500;padding:12px 16px;outline:none;resize:none;transition:border-color 0.2s;line-height:1.5;}
 .field-input:focus{border-color:#4C3B37;}
 .field-input.title-input{font-family:'Fjalla One',sans-serif;font-size:22px;letter-spacing:1px;}
-.field-input.content-input{min-height:300px;font-size:14px;line-height:1.8;}
 .rich-toolbar{display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap;}
 .rich-btn{background:#fff;border:1px solid rgba(0,0,0,0.15);color:rgba(0,0,0,0.55);font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;padding:5px 11px;cursor:pointer;transition:all 0.15s;line-height:1;}
 .rich-btn:hover{background:rgba(0,0,0,0.05);color:#151515;}
@@ -81,6 +76,17 @@ a{text-decoration:none;color:inherit;}
 .slug-preview{font-size:11px;color:rgba(0,0,0,0.35);margin-top:6px;font-family:monospace;letter-spacing:0.5px;}
 .slug-preview span{color:#4C3B37;}
 
+/* ── IMAGE UPLOAD ── */
+.img-upload-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.upload-btn{display:inline-block;padding:10px 18px;background:#fff;border:1px solid rgba(0,0,0,0.18);color:#4C3B37;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;cursor:pointer;transition:all 0.15s;}
+.upload-btn:hover{border-color:#4C3B37;background:rgba(76,59,55,0.05);}
+.upload-hint{font-size:12px;color:rgba(0,0,0,0.4);}
+.upload-note{font-size:11px;color:rgba(0,0,0,0.3);margin-top:6px;display:block;}
+.img-preview-wrap{display:flex;align-items:center;gap:14px;margin-top:14px;}
+.img-preview-thumb{width:150px;height:94px;object-fit:cover;border:1px solid rgba(0,0,0,0.12);background:#eee;flex-shrink:0;}
+.img-remove-btn{background:none;border:none;color:#c0392b;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;padding:0;}
+.img-remove-btn:hover{text-decoration:underline;}
+
 /* ── PREVIEW PANEL ── */
 .preview-panel{background:#f6f3f2;border-left:1px solid rgba(0,0,0,0.1);overflow-y:auto;max-height:calc(100vh - 56px);}
 .preview-header{padding:16px 24px;background:#f0ece9;border-bottom:1px solid rgba(76,59,55,0.1);display:flex;align-items:center;justify-content:space-between;}
@@ -90,8 +96,8 @@ a{text-decoration:none;color:inherit;}
 .prev-meta{font-size:13px;color:rgb(89,89,89);margin-bottom:20px;display:flex;gap:8px;align-items:center;}
 .prev-meta .pipe{color:#ccc;}
 .prev-hero{width:100%;height:180px;object-fit:cover;display:block;margin-bottom:20px;background:#ddd;}
-.prev-hero-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#e8e3e0,#d5cec9);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
-.prev-hero-placeholder span{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(76,59,55,0.35);}
+.prev-hero-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#e8e3e0,#d5cec9);display:flex;align-items:center;justify-content:center;margin-bottom:20px;text-align:center;padding:0 20px;}
+.prev-hero-placeholder span{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(76,59,55,0.45);}
 .prev-content{font-family:'Quicksand',sans-serif;font-size:14px;color:rgb(94,94,94);line-height:1.8;}
 .prev-content p{margin-bottom:10px;}
 .prev-content strong{font-weight:700;}
@@ -182,32 +188,49 @@ a{text-decoration:none;color:inherit;}
       </div>
 
       <div class="field">
-        <label class="field-label">Excerpt <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— shown on blog cards</span></label>
+        <label class="field-label">Excerpt <span class="field-hint">— shown on blog cards</span></label>
         <input class="field-input" id="fExcerpt" type="text" placeholder="Opening line or short teaser..." oninput="updatePreview();">
       </div>
 
       <div class="field">
-        <label class="field-label">Hero Image URL <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— full size</span></label>
-        <input class="field-input" id="fHero" type="text" placeholder="https://..." oninput="updatePreview();">
+        <label class="field-label">Hero Image <span class="field-hint">— full size, shown on the blog post page</span></label>
+        <div class="img-upload-row">
+          <label class="upload-btn" for="fHeroFile">Choose Image</label>
+          <input type="file" id="fHeroFile" accept="image/*" style="display:none;" onchange="onFileSelected(this,'hero')">
+          <span class="upload-hint" id="heroUploadHint">No image selected</span>
+        </div>
+        <span class="upload-note">JPG, PNG, or WEBP. Landscape, 1280px+ wide works best. Under 5MB.</span>
+        <div class="img-preview-wrap" id="heroPreviewWrap" style="display:none;">
+          <img class="img-preview-thumb" id="heroPreviewImg" src="" alt="">
+          <button type="button" class="img-remove-btn" onclick="removeImage('hero')">Remove</button>
+        </div>
       </div>
 
       <div class="field">
-        <label class="field-label">Thumbnail URL <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— card image</span></label>
-        <input class="field-input" id="fThumb" type="text" placeholder="https://... (leave blank to use hero)" oninput="updatePreview();">
+        <label class="field-label">Thumbnail Image <span class="field-hint">— card image, optional, uses hero if left blank</span></label>
+        <div class="img-upload-row">
+          <label class="upload-btn" for="fThumbFile">Choose Image</label>
+          <input type="file" id="fThumbFile" accept="image/*" style="display:none;" onchange="onFileSelected(this,'thumb')">
+          <span class="upload-hint" id="thumbUploadHint">No image selected</span>
+        </div>
+        <div class="img-preview-wrap" id="thumbPreviewWrap" style="display:none;">
+          <img class="img-preview-thumb" id="thumbPreviewImg" src="" alt="">
+          <button type="button" class="img-remove-btn" onclick="removeImage('thumb')">Remove</button>
+        </div>
       </div>
 
       <div class="field">
-  <label class="field-label">Content</label>
-  <div class="rich-toolbar">
-    <button class="rich-btn" onclick="fmt('bold')" title="Bold"><b>B</b></button>
-    <button class="rich-btn" onclick="fmt('italic')" title="Italic"><i>I</i></button>
-    <button class="rich-btn" onclick="fmt('underline')" title="Underline"><u>U</u></button>
-    <button class="rich-btn" onclick="fmt('insertUnorderedList')" title="Bullet list">• List</button>
-    <button class="rich-btn" onclick="fmtBlock('p')" title="Paragraph">¶ Para</button>
-    <button class="rich-btn" onclick="insertLink()" title="Link">🔗 Link</button>
-  </div>
-  <div class="rich-editor" id="fContent" contenteditable="true" oninput="updatePreview()"></div>
-</div>
+        <label class="field-label">Content</label>
+        <div class="rich-toolbar">
+          <button class="rich-btn" onclick="fmt('bold')" title="Bold"><b>B</b></button>
+          <button class="rich-btn" onclick="fmt('italic')" title="Italic"><i>I</i></button>
+          <button class="rich-btn" onclick="fmt('underline')" title="Underline"><u>U</u></button>
+          <button class="rich-btn" onclick="fmt('insertUnorderedList')" title="Bullet list">• List</button>
+          <button class="rich-btn" onclick="fmtBlock('p')" title="Paragraph">¶ Para</button>
+          <button class="rich-btn" onclick="insertLink()" title="Link">🔗 Link</button>
+        </div>
+        <div class="rich-editor" id="fContent" contenteditable="true" oninput="updatePreview()"></div>
+      </div>
 
       <div class="publish-bar">
         <div class="publish-bar-left">
@@ -238,12 +261,16 @@ var GH_TOKEN = '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';   // replace with you
 var GH_REPO  = 'Biege-Daemon/Get-Inspired'; // confirm repo name
 var GH_FILE  = 'blogs.js';                  // path to blogs.js in repo
 var GH_BRANCH = 'main';                     // or 'master' — check your repo
+var GH_UPLOAD_DIR = 'uploads';              // folder in repo where images get committed
 var ADMIN_PASSWORD = 'password';  // set your own admin password
+var MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5MB
 
 // ── STATE ──
 var posts = [];
 var currentSlug = null;
 var allCategories = ['happiness', 'life']; // seed defaults
+var heroFile = null, thumbFile = null;   // pending File objects, if a new image was picked
+var heroUrl = '', thumbUrl = '';         // committed URLs (existing posts, or just-uploaded)
 
 // ── LOCK ──
 function checkPassword() {
@@ -273,7 +300,6 @@ function init() {
     parseBlogsJS(content);
     renderSidebar();
     setStatus('idle', 'Ready');
-    // Set today's date as default
     document.getElementById('fDate').value = new Date().toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
     renderCats();
   })
@@ -284,19 +310,16 @@ function init() {
 
 // ── PARSE blogs.js ──
 function parseBlogsJS(src) {
-  // Extract the array between BLOG_POSTS = [ ... ]
   var match = src.match(/var BLOG_POSTS\s*=\s*(\[[\s\S]*?\]);/);
   if (!match) { posts = []; return; }
   try {
     posts = JSON.parse(match[1]);
-    // Collect all categories
     posts.forEach(function(p) {
       p.categories.forEach(function(c) {
         if (allCategories.indexOf(c) === -1) allCategories.push(c);
       });
     });
   } catch(e) {
-    // Fallback: eval in a sandboxed way by replacing var declaration
     try {
       var arr = [];
       (new Function('arr', 'var BLOG_POSTS = ' + match[1] + '; arr.push.apply(arr, BLOG_POSTS);'))(arr);
@@ -307,11 +330,6 @@ function parseBlogsJS(src) {
 
 // ── BUILD blogs.js string ──
 function buildBlogsJS() {
-  var arr = JSON.stringify(posts, null, 2)
-    .replace(/"([^"]+)":/g, function(m, k) { return k + ':'; }) // unquote keys for cleaner JS
-    ;
-
-  // We'll keep it as valid JSON-compatible JS for reliability
   var postsStr = posts.map(function(p) {
     return '  {\n'
       + '    slug: ' + JSON.stringify(p.slug) + ',\n'
@@ -392,7 +410,7 @@ function renderRecentPosts(container, currentSlug) {
 function renderSidebar() {
   var list = document.getElementById('postList');
   if (!posts.length) {
-    list.innerHTML = '<div style="padding:12px 24px;font-size:12px;color:rgba(255,255,255,0.2);">No posts yet</div>';
+    list.innerHTML = '<div style="padding:12px 24px;font-size:12px;color:rgba(0,0,0,0.3);">No posts yet</div>';
     return;
   }
   list.innerHTML = posts.map(function(p) {
@@ -411,16 +429,24 @@ function loadPost(slug) {
   currentSlug = slug;
   var p = posts.find(function(x) { return x.slug === slug; });
   if (!p) return;
+
   document.getElementById('fTitle').value   = p.title;
   document.getElementById('fDate').value    = p.date;
   document.getElementById('fExcerpt').value = p.excerpt;
-  document.getElementById('fHero').value    = p.hero;
-  document.getElementById('fThumb').value   = p.thumb !== p.hero ? p.thumb : '';
-setContent(p.content.trim());
+
+  heroFile = null; thumbFile = null;
+  heroUrl = p.hero || '';
+  thumbUrl = (p.thumb && p.thumb !== p.hero) ? p.thumb : '';
+
+  document.getElementById('fHeroFile').value = '';
+  document.getElementById('fThumbFile').value = '';
+  setImagePreview('hero', heroUrl, heroUrl ? 'Current image' : 'No image selected');
+  setImagePreview('thumb', thumbUrl, thumbUrl ? 'Current image' : 'No image selected');
+
+  setContent(p.content.trim());
   document.getElementById('editorEyebrow').textContent = 'Editing Post';
   document.getElementById('deleteBtn').style.display = 'inline-block';
   document.getElementById('slugPreview').textContent = slug;
-  // Set selected cats
   allCategories = allCategories.concat(p.categories).filter(function(c, i, a) { return a.indexOf(c) === i; });
   renderCats(p.categories);
   renderSidebar();
@@ -433,9 +459,14 @@ function newPost() {
   document.getElementById('fTitle').value   = '';
   document.getElementById('fDate').value    = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
   document.getElementById('fExcerpt').value = '';
-  document.getElementById('fHero').value    = '';
-  document.getElementById('fThumb').value   = '';
-setContent('');
+
+  heroFile = null; thumbFile = null; heroUrl = ''; thumbUrl = '';
+  document.getElementById('fHeroFile').value = '';
+  document.getElementById('fThumbFile').value = '';
+  setImagePreview('hero', '', 'No image selected');
+  setImagePreview('thumb', '', 'No image selected');
+
+  setContent('');
   document.getElementById('editorEyebrow').textContent = 'New Post';
   document.getElementById('deleteBtn').style.display = 'none';
   document.getElementById('slugPreview').textContent = '—';
@@ -497,7 +528,7 @@ function addNewCat() {
   });
 }
 
-  // ── RICH EDITOR ──
+// ── RICH EDITOR ──
 function fmt(cmd) {
   document.getElementById('fContent').focus();
   document.execCommand(cmd, false, null);
@@ -519,11 +550,112 @@ function insertLink() {
 function getContent() { return document.getElementById('fContent').innerHTML.trim(); }
 function setContent(html) { document.getElementById('fContent').innerHTML = html || ''; }
 
+// ── IMAGE UPLOAD HANDLING ──
+function setImagePreview(kind, src, hintText) {
+  var imgId  = kind === 'hero' ? 'heroPreviewImg'  : 'thumbPreviewImg';
+  var wrapId = kind === 'hero' ? 'heroPreviewWrap' : 'thumbPreviewWrap';
+  var hintId = kind === 'hero' ? 'heroUploadHint'  : 'thumbUploadHint';
+  document.getElementById(hintId).textContent = hintText;
+  if (src) {
+    document.getElementById(imgId).src = src;
+    document.getElementById(wrapId).style.display = 'flex';
+  } else {
+    document.getElementById(wrapId).style.display = 'none';
+  }
+}
+
+function onFileSelected(input, kind) {
+  var file = input.files && input.files[0];
+  if (!file) return;
+  if (!/^image\//.test(file.type)) {
+    alert('Please select an image file.');
+    input.value = '';
+    return;
+  }
+  if (file.size > MAX_IMAGE_BYTES) {
+    alert('Image must be under ' + (MAX_IMAGE_BYTES / (1024*1024)) + 'MB.');
+    input.value = '';
+    return;
+  }
+  if (kind === 'hero') heroFile = file; else thumbFile = file;
+  var blobUrl = URL.createObjectURL(file);
+  setImagePreview(kind, blobUrl, file.name + ' (' + Math.round(file.size / 1024) + ' KB)');
+  updatePreview();
+}
+
+function removeImage(kind) {
+  if (kind === 'hero') {
+    heroFile = null; heroUrl = '';
+    document.getElementById('fHeroFile').value = '';
+  } else {
+    thumbFile = null; thumbUrl = '';
+    document.getElementById('fThumbFile').value = '';
+  }
+  setImagePreview(kind, '', 'No image selected');
+  updatePreview();
+}
+
+function currentHeroSrc() {
+  if (heroFile) {
+    var img = document.getElementById('heroPreviewImg');
+    return img ? img.src : '';
+  }
+  return heroUrl;
+}
+function currentThumbSrc() {
+  if (thumbFile) {
+    var img = document.getElementById('thumbPreviewImg');
+    return img ? img.src : '';
+  }
+  return thumbUrl || currentHeroSrc();
+}
+
+function sanitizeFilename(name) {
+  return name.toLowerCase().replace(/[^a-z0-9.\-]/g, '-').replace(/-+/g, '-');
+}
+
+function fileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var result = reader.result;
+      resolve(result.substring(result.indexOf(',') + 1));
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// Commits an image file into the repo and returns its public raw URL.
+function uploadImageToGitHub(file) {
+  return fileToBase64(file).then(function(base64) {
+    var path = GH_UPLOAD_DIR + '/' + Date.now() + '-' + sanitizeFilename(file.name);
+    return fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + path, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Upload image: ' + path,
+        content: base64,
+        branch: GH_BRANCH
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (!data.content) throw new Error(data.message || 'Image upload failed');
+      return 'https://raw.githubusercontent.com/' + GH_REPO + '/' + GH_BRANCH + '/' + path;
+    });
+  });
+}
+
 // ── PREVIEW ──
 function updatePreview() {
   var title   = document.getElementById('fTitle').value   || 'Post Title';
   var date    = document.getElementById('fDate').value    || '—';
-  var hero    = sanitizeImgUrl(document.getElementById('fHero').value);
+  var hero    = currentHeroSrc();
   var content = getContent();
   var cats    = selectedCats.length ? selectedCats.map(function(c){ return c.charAt(0).toUpperCase()+c.slice(1); }).join(', ') : '—';
 
@@ -540,7 +672,7 @@ function updatePreview() {
   var imgEl = document.getElementById('previewHeroImg');
   if (imgEl) {
     imgEl.addEventListener('error', function() {
-      imgEl.outerHTML = '<div class="prev-hero-placeholder"><span>⚠ Image failed to load — check the URL or try a different host</span></div>';
+      imgEl.outerHTML = '<div class="prev-hero-placeholder"><span>⚠ Image failed to load</span></div>';
     });
   }
 }
@@ -550,24 +682,41 @@ function publishPost() {
   var title   = document.getElementById('fTitle').value.trim();
   var date    = document.getElementById('fDate').value.trim();
   var excerpt = document.getElementById('fExcerpt').value.trim();
-  var hero    = sanitizeImgUrl(document.getElementById('fHero').value.trim());
-var thumb   = sanitizeImgUrl(document.getElementById('fThumb').value.trim()) || hero;
-var content = getContent();
+  var content = getContent();
   var slug    = currentSlug || toSlug(title);
 
   if (!title)   { alert('Title is required.'); return; }
   if (!slug)    { alert('Could not generate slug from title.'); return; }
   if (!content) { alert('Content is required.'); return; }
   if (!selectedCats.length) { alert('Select at least one category.'); return; }
+  if (!heroFile && !heroUrl) { alert('Please upload a hero image.'); return; }
 
-  var post = { slug: slug, title: title, date: date, categories: selectedCats.slice(), excerpt: excerpt, thumb: thumb, hero: hero, content: '\n      ' + content + '\n    ' };
+  document.getElementById('saveBtn').disabled = true;
+  setStatus('saving', 'Uploading image(s)...');
+  document.getElementById('topStatus').textContent = 'Uploading image(s)...';
 
-  // Update or add
-  var idx = posts.findIndex(function(p) { return p.slug === slug; });
-  if (idx !== -1) posts[idx] = post; else posts.push(post);
-  currentSlug = slug;
+  var heroPromise  = heroFile  ? uploadImageToGitHub(heroFile)  : Promise.resolve(heroUrl);
+  var thumbPromise = thumbFile ? uploadImageToGitHub(thumbFile) : Promise.resolve(thumbUrl);
 
-  commitToGitHub();
+  Promise.all([heroPromise, thumbPromise]).then(function(results) {
+    var hero  = results[0];
+    var thumb = results[1] || hero;
+
+    // Persist the resolved URLs so further edits in this session don't re-upload.
+    heroUrl = hero; thumbUrl = results[1] ? thumb : '';
+    heroFile = null; thumbFile = null;
+
+    var post = { slug: slug, title: title, date: date, categories: selectedCats.slice(), excerpt: excerpt, thumb: thumb, hero: hero, content: '\n      ' + content + '\n    ' };
+    var idx = posts.findIndex(function(p) { return p.slug === slug; });
+    if (idx !== -1) posts[idx] = post; else posts.push(post);
+    currentSlug = slug;
+
+    commitToGitHub();
+  }).catch(function(e) {
+    setStatus('error', 'Error: ' + e.message);
+    document.getElementById('topStatus').textContent = 'Upload failed';
+    document.getElementById('saveBtn').disabled = false;
+  });
 }
 
 // ── DELETE ──
@@ -579,19 +728,18 @@ function deletePost() {
   commitToGitHub(true);
 }
 
-// ── GITHUB COMMIT ──
+// ── GITHUB COMMIT (blogs.js) ──
 function commitToGitHub(isDelete) {
   setStatus('saving', 'Publishing...');
   document.getElementById('saveBtn').disabled = true;
   document.getElementById('topStatus').textContent = 'Publishing...';
 
-  // First get current SHA
   fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE + '?ref=' + GH_BRANCH, {
     headers: { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
-    var sha     = data.sha;
+    var sha = data.sha;
     var newContent = buildBlogsJS();
     var encoded = btoa(unescape(encodeURIComponent(newContent)));
     var message = isDelete ? 'Delete post via admin' : 'Publish post: ' + document.getElementById('fTitle').value.trim();
@@ -630,13 +778,6 @@ function commitToGitHub(isDelete) {
   });
 }
 
-function sanitizeImgUrl(url) {
-  url = url.trim();
-  var wsimgMatch = url.match(/^(https?:\/\/[^\/\s]*wsimg\.com\/[^\s]+?)\/:\/.*$/);
-  if (wsimgMatch) return wsimgMatch[1];
-  return url;
-}
-  
 // ── STATUS ──
 function setStatus(type, msg) {
   var pill = document.getElementById('statusPill');
