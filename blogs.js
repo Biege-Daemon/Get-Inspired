@@ -7,7 +7,7 @@ var BLOG_POSTS = [
     title: "Get Started",
     date: "23 March 2026",
     categories: ["happiness","life"],
-    excerpt: "The message I want to share with you today is ÃÂÃÂ¢ÃÂÃÂÃÂÃÂGET STARTEDÃÂÃÂ¢ÃÂÃÂÃÂÃÂ.",
+    excerpt: "The message I want to share with you today is ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂGET STARTEDÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ.",
     thumb: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:200",
     hero: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:1280",
     content: `
@@ -16,13 +16,15 @@ var BLOG_POSTS = [
 
 
 
-      <p>The message I want to share with you today is <strong>ÃÂÃÂ¢ÃÂÃÂÃÂÃÂGET STARTEDÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</strong>.</p>
-      <p>You donÃÂÃÂ¢ÃÂÃÂÃÂÃÂt need to have a perfect plan.<br>You donÃÂÃÂ¢ÃÂÃÂÃÂÃÂt need to know all the answers.</p>
+
+      <p>The message I want to share with you today is <strong>ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂGET STARTEDÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ</strong>.</p>
+      <p>You donÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt need to have a perfect plan.<br>You donÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt need to know all the answers.</p>
       <p>You just need momentum. You just need to <strong>start</strong>.</p>
-      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the ÃÂÃÂ¢ÃÂÃÂÃÂÃÂright timeÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and trust me there is no better ÃÂÃÂ¢ÃÂÃÂÃÂÃÂright timeÃÂÃÂ¢ÃÂÃÂÃÂÃÂ than NOW. You can read hundreds of articles, watch endless videos, and make the best plansÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¦But the simple truth is:</p>
-      <p>The book you want to write wonÃÂÃÂ¢ÃÂÃÂÃÂÃÂt write itself.<br>The weight you want to lose wonÃÂÃÂ¢ÃÂÃÂÃÂÃÂt lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
-      <p>Clarity doesnÃÂÃÂ¢ÃÂÃÂÃÂÃÂt come before action. It comes <strong>because of it</strong>.</p>
+      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂright timeÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ and trust me there is no better ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂright timeÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ than NOW. You can read hundreds of articles, watch endless videos, and make the best plansÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦But the simple truth is:</p>
+      <p>The book you want to write wonÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt write itself.<br>The weight you want to lose wonÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
+      <p>Clarity doesnÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt come before action. It comes <strong>because of it</strong>.</p>
       <p>Start messy. Start unsure.<br>But, start anyway and make the rest of your life to be the best of your life.</p>
+    
     
     
     
@@ -44,15 +46,17 @@ var BLOG_POSTS = [
 
 
 
+
       <p>Two seeds lay side by side in the soil.</p>
-      <p>The first seed said,<br>ÃÂÃÂ¢ÃÂÃÂÃÂÃÂI will grow. I will push my roots deep into the earth and reach for the sun.ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</p>
-      <p>The second seed said,<br>ÃÂÃÂ¢ÃÂÃÂÃÂÃÂWhat if the soil is hard? What if the sun burns me?ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</p>
+      <p>The first seed said,<br>ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂI will grow. I will push my roots deep into the earth and reach for the sun.ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ</p>
+      <p>The second seed said,<br>ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂWhat if the soil is hard? What if the sun burns me?ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ</p>
       <p>So it waited.</p>
       <p>Spring arrived.<br>The first seed became a flower. The second seed was eaten by a bird.</p>
-      <p>Fear doesnÃÂÃÂ¢ÃÂÃÂÃÂÃÂt just delay dreams. It destroys them.</p>
-      <p>We often believe weÃÂÃÂ¢ÃÂÃÂÃÂÃÂre being ÃÂÃÂ¢ÃÂÃÂÃÂÃÂsafeÃÂÃÂ¢ÃÂÃÂÃÂÃÂ when we wait.<br>But life doesnÃÂÃÂ¢ÃÂÃÂÃÂÃÂt reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
-      <p>ThereÃÂÃÂ¢ÃÂÃÂÃÂÃÂs a quote IÃÂÃÂ¢ÃÂÃÂÃÂÃÂve fallen in love with ÃÂÃÂ¢ÃÂÃÂÃÂÃÂThe magic youÃÂÃÂ¢ÃÂÃÂÃÂÃÂre looking for is in the work you are avoiding.ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</p>
+      <p>Fear doesnÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt just delay dreams. It destroys them.</p>
+      <p>We often believe weÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂre being ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂsafeÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ when we wait.<br>But life doesnÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂt reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
+      <p>ThereÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂs a quote IÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂve fallen in love with ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂThe magic youÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂre looking for is in the work you are avoiding.ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ</p>
       <p>So, face your fears and make the rest of your life to be the best of your life.</p>
+    
     
     
     
@@ -66,8 +70,8 @@ var BLOG_POSTS = [
     date: "18 June 2026",
     categories: ["happiness"],
     excerpt: "test",
-    thumb: "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781783624939-frnd1.png",
-    hero: "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781783624939-frnd1.png",
+    thumb: "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781783708167-frnd1.png",
+    hero: "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781783708167-frnd1.png",
     content: `
 
       Test
