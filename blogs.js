@@ -63,20 +63,6 @@ var BLOG_POSTS = [
     
     
     `
-  },
-  {
-    slug: "test",
-    title: "Test",
-    date: "18 June 2026",
-    categories: ["happiness"],
-    excerpt: "test",
-    thumb: "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781783708167-frnd1.png",
-    hero: "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781783708167-frnd1.png",
-    content: `
-
-      Test
-    
-    `
   }
   // ── ADD NEW POSTS BELOW THIS LINE ──
 ];
