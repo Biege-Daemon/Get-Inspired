@@ -54,8 +54,8 @@ var BLOG_POSTS = [
     date: "18 June 2026",
     categories: ["happiness"],
     excerpt: "Test again",
-    thumb: "https://in.linkedin.com/in/arpan-ghosh-966008128",
-    hero: "https://in.linkedin.com/in/arpan-ghosh-966008128",
+    thumb: "https://www.magnific.com/free-photos-vectors/beautiful",
+    hero: "https://www.magnific.com/free-photos-vectors/beautiful",
     content: `
 
       Test
