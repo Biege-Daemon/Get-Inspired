@@ -528,7 +528,7 @@ function updatePreview() {
   var cats    = selectedCats.length ? selectedCats.map(function(c){ return c.charAt(0).toUpperCase()+c.slice(1); }).join(', ') : '—';
 
   var heroHtml = hero
-    ? '<img class="prev-hero" src="' + hero + '" alt="">'
+    ? '<img class="prev-hero" id="previewHeroImg" src="' + hero + '" alt="">'
     : '<div class="prev-hero-placeholder"><span>Hero Image</span></div>';
 
   document.getElementById('previewBody').innerHTML =
@@ -536,6 +536,13 @@ function updatePreview() {
     + '<h2 class="prev-title">' + title + '</h2>'
     + heroHtml
     + '<div class="prev-content">' + (content || '<p style="color:#bbb;font-style:italic;">Content will appear here...</p>') + '</div>';
+
+  var imgEl = document.getElementById('previewHeroImg');
+  if (imgEl) {
+    imgEl.addEventListener('error', function() {
+      imgEl.outerHTML = '<div class="prev-hero-placeholder"><span>⚠ Image failed to load — check the URL or try a different host</span></div>';
+    });
+  }
 }
 
 // ── PUBLISH ──
@@ -625,10 +632,7 @@ function commitToGitHub(isDelete) {
 
 function sanitizeImgUrl(url) {
   url = url.trim();
-  // Strip wsimg's on-the-fly resize suffix — it can time out (504)
-  // depending on target size/params. The bare file URL always works,
-  // and CSS already scales images down for display.
-  var wsimgMatch = url.match(/^(https?:\/\/img\d*\.wsimg\.com\/[^\s]+?)\/:\/.*$/);
+  var wsimgMatch = url.match(/^(https?:\/\/[^\/\s]*wsimg\.com\/[^\s]+?)\/:\/.*$/);
   if (wsimgMatch) return wsimgMatch[1];
   return url;
 }
