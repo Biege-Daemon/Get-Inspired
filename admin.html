@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Get Inspired</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;}
+body{font-family:'Quicksand',sans-serif;background:#0f0f0f;color:#e8e8e8;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+
+/* ── LOCK SCREEN ── */
+#lockScreen{position:fixed;inset:0;background:#0f0f0f;display:flex;align-items:center;justify-content:center;z-index:9999;}
+.lock-box{width:100%;max-width:360px;padding:0 24px;text-align:center;}
+.lock-logo{font-family:'Fjalla One',sans-serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:40px;}
+.lock-title{font-family:'Fjalla One',sans-serif;font-size:28px;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:8px;}
+.lock-sub{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:32px;letter-spacing:0.5px;}
+.lock-input{width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);color:#fff;font-family:'Quicksand',sans-serif;font-size:15px;font-weight:600;padding:14px 18px;letter-spacing:2px;outline:none;text-align:center;transition:border-color 0.2s;margin-bottom:12px;}
+.lock-input:focus{border-color:rgba(255,255,255,0.3);}
+.lock-btn{width:100%;padding:14px;background:#4C3B37;color:#fff;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;border:none;cursor:pointer;transition:background 0.2s;}
+.lock-btn:hover{background:#5c4840;}
+.lock-error{font-size:12px;color:#e05c5c;margin-top:10px;min-height:18px;letter-spacing:0.5px;}
+
+/* ── LAYOUT ── */
+#app{display:none;min-height:100vh;}
+.top-bar{background:#161616;border-bottom:1px solid rgba(255,255,255,0.07);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.top-bar-brand{font-family:'Fjalla One',sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.top-bar-right{display:flex;align-items:center;gap:20px;}
+.top-bar-status{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.5px;}
+.top-bar-site{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);padding:6px 14px;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s;cursor:pointer;}
+.top-bar-site:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);}
+
+.main{display:grid;grid-template-columns:260px 1fr 320px;min-height:calc(100vh - 56px);}
+
+/* ── LEFT SIDEBAR ── */
+.sidebar{background:#141414;border-right:1px solid rgba(255,255,255,0.06);padding:32px 0;}
+.sidebar-section{margin-bottom:32px;}
+.sidebar-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,0.2);padding:0 24px;margin-bottom:12px;display:block;}
+.post-list{display:flex;flex-direction:column;}
+.post-item{padding:12px 24px;cursor:pointer;border-left:2px solid transparent;transition:all 0.15s;}
+.post-item:hover{background:rgba(255,255,255,0.04);}
+.post-item.active{background:rgba(76,59,55,0.2);border-left-color:#4C3B37;}
+.post-item-title{font-size:13px;font-weight:600;color:#e8e8e8;margin-bottom:3px;line-height:1.3;}
+.post-item-meta{font-size:11px;color:rgba(255,255,255,0.25);display:flex;gap:8px;}
+.post-item-cat{background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:2px;}
+.new-post-btn{display:flex;align-items:center;gap:8px;margin:0 24px;padding:10px 16px;background:rgba(76,59,55,0.3);border:1px solid rgba(76,59,55,0.5);color:#e8c4b8;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;cursor:pointer;transition:all 0.2s;width:calc(100% - 48px);}
+.new-post-btn:hover{background:rgba(76,59,55,0.5);}
+.new-post-btn svg{flex-shrink:0;}
+
+/* ── EDITOR ── */
+.editor{padding:40px 48px;overflow-y:auto;max-height:calc(100vh - 56px);}
+.editor-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,0.2);margin-bottom:24px;display:block;}
+.field{margin-bottom:24px;}
+.field-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;}
+.field-input{width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.08);color:#e8e8e8;font-family:'Quicksand',sans-serif;font-size:15px;font-weight:500;padding:12px 16px;outline:none;resize:none;transition:border-color 0.2s;line-height:1.5;}
+.field-input:focus{border-color:rgba(76,59,55,0.7);}
+.field-input.title-input{font-family:'Fjalla One',sans-serif;font-size:22px;letter-spacing:1px;}
+.field-input.content-input{min-height:300px;font-size:14px;line-height:1.8;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cats-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.cat-chip{padding:6px 14px;border:1px solid rgba(255,255,255,0.12);font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.15s;background:none;}
+.cat-chip.selected{background:#4C3B37;border-color:#4C3B37;color:#fff;}
+.cat-chip-add{padding:6px 14px;border:1px dashed rgba(255,255,255,0.12);font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.25);cursor:pointer;background:none;transition:all 0.15s;}
+.cat-chip-add:hover{border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.5);}
+.cat-new-input{background:#1a1a1a;border:1px solid rgba(76,59,55,0.5);color:#e8e8e8;font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:6px 12px;outline:none;width:120px;}
+.slug-preview{font-size:11px;color:rgba(255,255,255,0.2);margin-top:6px;font-family:monospace;letter-spacing:0.5px;}
+.slug-preview span{color:rgba(76,59,55,0.8);}
+
+/* ── PREVIEW PANEL ── */
+.preview-panel{background:#f6f3f2;border-left:1px solid rgba(0,0,0,0.1);overflow-y:auto;max-height:calc(100vh - 56px);}
+.preview-header{padding:16px 24px;background:#f0ece9;border-bottom:1px solid rgba(76,59,55,0.1);display:flex;align-items:center;justify-content:space-between;}
+.preview-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:rgba(76,59,55,0.4);}
+.preview-body{padding:32px 28px;}
+.prev-title{font-family:'Fjalla One',sans-serif;font-size:24px;color:#1B1B1B;text-transform:uppercase;letter-spacing:0.93px;line-height:1.2;margin-bottom:8px;}
+.prev-meta{font-size:13px;color:rgb(89,89,89);margin-bottom:20px;display:flex;gap:8px;align-items:center;}
+.prev-meta .pipe{color:#ccc;}
+.prev-hero{width:100%;height:180px;object-fit:cover;display:block;margin-bottom:20px;background:#ddd;}
+.prev-hero-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#e8e3e0,#d5cec9);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.prev-hero-placeholder span{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(76,59,55,0.35);}
+.prev-content{font-family:'Quicksand',sans-serif;font-size:14px;color:rgb(94,94,94);line-height:1.8;}
+.prev-content p{margin-bottom:10px;}
+.prev-content strong{font-weight:700;}
+
+/* ── PUBLISH BAR ── */
+.publish-bar{position:sticky;bottom:0;background:#161616;border-top:1px solid rgba(255,255,255,0.07);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.publish-bar-left{display:flex;align-items:center;gap:12px;}
+.delete-btn{padding:10px 20px;background:none;border:1px solid rgba(255,80,80,0.2);color:rgba(255,100,100,0.5);font-family:'Quicksand',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;cursor:pointer;transition:all 0.2s;}
+.delete-btn:hover{border-color:rgba(255,80,80,0.5);color:rgba(255,100,100,0.8);}
+.save-btn{padding:10px 32px;background:#4C3B37;color:#fff;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;border:none;cursor:pointer;transition:all 0.2s;}
+.save-btn:hover{background:#5c4840;}
+.save-btn:disabled{opacity:0.4;cursor:not-allowed;}
+.status-pill{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:4px 12px;}
+.status-pill.idle{color:rgba(255,255,255,0.2);}
+.status-pill.saving{color:#f0c060;background:rgba(240,192,96,0.1);}
+.status-pill.success{color:#60c080;background:rgba(96,192,128,0.1);}
+.status-pill.error{color:#e06060;background:rgba(224,96,96,0.1);}
+
+@media(max-width:1100px){
+  .main{grid-template-columns:220px 1fr;}
+  .preview-panel{display:none;}
+}
+@media(max-width:768px){
+  .main{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .editor{padding:24px;}
+  .publish-bar{padding:16px 24px;}
+  .top-bar{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <div class="lock-box">
+    <div class="lock-logo">Get Inspired Magazine</div>
+    <h1 class="lock-title">Admin</h1>
+    <p class="lock-sub">Enter password to continue</p>
+    <input class="lock-input" id="pwInput" type="password" placeholder="••••••••" autocomplete="current-password">
+    <button class="lock-btn" onclick="checkPassword()">Enter</button>
+    <p class="lock-error" id="lockError"></p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="top-bar">
+    <span class="top-bar-brand">Get Inspired — CMS</span>
+    <div class="top-bar-right">
+      <span class="top-bar-status" id="topStatus">Ready</span>
+      <a href="index.html" class="top-bar-site" target="_blank">View Site ↗</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Posts</span>
+        <div class="post-list" id="postList"></div>
+      </div>
+      <button class="new-post-btn" onclick="newPost()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6.5 1a.5.5 0 0 0-1 0v4.5H1a.5.5 0 0 0 0 1h4.5V11a.5.5 0 0 0 1 0V6.5H11a.5.5 0 0 0 0-1H6.5V1z"/></svg>
+        New Post
+      </button>
+    </div>
+
+    <!-- EDITOR -->
+    <div class="editor" id="editorPanel">
+      <span class="editor-eyebrow" id="editorEyebrow">New Post</span>
+
+      <div class="field">
+        <label class="field-label">Title</label>
+        <input class="field-input title-input" id="fTitle" type="text" placeholder="Post title..." oninput="syncSlug(); updatePreview();">
+        <div class="slug-preview">URL: blog-post.html?slug=<span id="slugPreview">—</span></div>
+      </div>
+
+      <div class="field field-row">
+        <div>
+          <label class="field-label">Date</label>
+          <input class="field-input" id="fDate" type="text" placeholder="18 June 2026" oninput="updatePreview();">
+        </div>
+        <div>
+          <label class="field-label">Categories</label>
+          <div class="cats-wrap" id="catsWrap"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Excerpt <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— shown on blog cards</span></label>
+        <input class="field-input" id="fExcerpt" type="text" placeholder="Opening line or short teaser..." oninput="updatePreview();">
+      </div>
+
+      <div class="field">
+        <label class="field-label">Hero Image URL <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— full size</span></label>
+        <input class="field-input" id="fHero" type="text" placeholder="https://..." oninput="updatePreview();">
+      </div>
+
+      <div class="field">
+        <label class="field-label">Thumbnail URL <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— card image</span></label>
+        <input class="field-input" id="fThumb" type="text" placeholder="https://... (leave blank to use hero)" oninput="updatePreview();">
+      </div>
+
+      <div class="field">
+        <label class="field-label">Content <span style="color:rgba(255,255,255,0.2);font-size:10px;text-transform:none;letter-spacing:0;">— supports HTML, wrap paragraphs in &lt;p&gt; tags</span></label>
+        <textarea class="field-input content-input" id="fContent" placeholder="<p>Your post content here...</p>&#10;<p>Each paragraph in its own &lt;p&gt; tag.</p>" oninput="updatePreview()"></textarea>
+      </div>
+
+      <div class="publish-bar">
+        <div class="publish-bar-left">
+          <button class="delete-btn" id="deleteBtn" onclick="deletePost()" style="display:none;">Delete Post</button>
+          <span class="status-pill idle" id="statusPill">—</span>
+        </div>
+        <button class="save-btn" id="saveBtn" onclick="publishPost()">Publish</button>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-panel">
+      <div class="preview-header">
+        <span class="preview-label">Live Preview</span>
+      </div>
+      <div class="preview-body" id="previewBody">
+        <div style="text-align:center;padding:60px 0;">
+          <p style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:rgba(76,59,55,0.3);">Start typing to see preview</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG — hardcode your values here ──
+var GH_TOKEN = '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';   // replace with your PAT
+var GH_REPO  = 'Biege-Daemon/Get-Inspired'; // confirm repo name
+var GH_FILE  = 'blogs.js';                  // path to blogs.js in repo
+var GH_BRANCH = 'main';                     // or 'master' — check your repo
+var ADMIN_PASSWORD = 'password';  // set your own admin password
+
+// ── STATE ──
+var posts = [];
+var currentSlug = null;
+var allCategories = ['happiness', 'life']; // seed defaults
+
+// ── LOCK ──
+function checkPassword() {
+  var val = document.getElementById('pwInput').value;
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    init();
+  } else {
+    document.getElementById('lockError').textContent = 'Incorrect password.';
+    document.getElementById('pwInput').value = '';
+  }
+}
+document.getElementById('pwInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPassword();
+});
+
+// ── INIT ──
+function init() {
+  setStatus('loading', 'Loading posts...');
+  fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE + '?ref=' + GH_BRANCH, {
+    headers: { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    var content = atob(data.content.replace(/\n/g, ''));
+    parseBlogsJS(content);
+    renderSidebar();
+    setStatus('idle', 'Ready');
+    // Set today's date as default
+    document.getElementById('fDate').value = new Date().toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+    renderCats();
+  })
+  .catch(function(e) {
+    setStatus('error', 'Failed to load. Check token/repo.');
+  });
+}
+
+// ── PARSE blogs.js ──
+function parseBlogsJS(src) {
+  // Extract the array between BLOG_POSTS = [ ... ]
+  var match = src.match(/var BLOG_POSTS\s*=\s*(\[[\s\S]*?\]);/);
+  if (!match) { posts = []; return; }
+  try {
+    posts = JSON.parse(match[1]);
+    // Collect all categories
+    posts.forEach(function(p) {
+      p.categories.forEach(function(c) {
+        if (allCategories.indexOf(c) === -1) allCategories.push(c);
+      });
+    });
+  } catch(e) {
+    // Fallback: eval in a sandboxed way by replacing var declaration
+    try {
+      var arr = [];
+      (new Function('arr', 'var BLOG_POSTS = ' + match[1] + '; arr.push.apply(arr, BLOG_POSTS);'))(arr);
+      posts = arr;
+    } catch(e2) { posts = []; }
+  }
+}
+
+// ── BUILD blogs.js string ──
+function buildBlogsJS() {
+  var arr = JSON.stringify(posts, null, 2)
+    .replace(/"([^"]+)":/g, function(m, k) { return k + ':'; }) // unquote keys for cleaner JS
+    ;
+
+  // We'll keep it as valid JSON-compatible JS for reliability
+  var postsStr = posts.map(function(p) {
+    return '  {\n'
+      + '    slug: ' + JSON.stringify(p.slug) + ',\n'
+      + '    title: ' + JSON.stringify(p.title) + ',\n'
+      + '    date: ' + JSON.stringify(p.date) + ',\n'
+      + '    categories: ' + JSON.stringify(p.categories) + ',\n'
+      + '    excerpt: ' + JSON.stringify(p.excerpt) + ',\n'
+      + '    thumb: ' + JSON.stringify(p.thumb) + ',\n'
+      + '    hero: ' + JSON.stringify(p.hero) + ',\n'
+      + '    content: `\n' + p.content + '\n    `\n'
+      + '  }';
+  }).join(',\n');
+
+  return `// ── BLOGS.JS — Single source of truth for all blog posts
+// To publish a new post: add one object to this array.
+
+var BLOG_POSTS = [
+${postsStr}
+  // ── ADD NEW POSTS BELOW THIS LINE ──
+];
+
+function getPostBySlug(slug) {
+  return BLOG_POSTS.find(function(p) { return p.slug === slug; }) || null;
+}
+
+function getCategoryLabel(cats) {
+  return cats.map(function(c) {
+    return c.charAt(0).toUpperCase() + c.slice(1);
+  }).join(', ');
+}
+
+function renderBlogCards(container, posts) {
+  container.innerHTML = posts.map(function(post) {
+    return '<a href="blog-post.html?slug=' + post.slug + '" class="blog-card" data-categories="' + post.categories.join(' ') + '">'
+      + '<div class="blog-card-img" style="background-image:url(\\'' + post.thumb + '\\');"></div>'
+      + '<div class="blog-card-body">'
+      +   '<div class="blog-meta"><span>' + post.date + '</span><span class="pipe">|</span><span>' + getCategoryLabel(post.categories) + '</span></div>'
+      +   '<h4>' + post.title + '</h4>'
+      +   '<p>' + post.excerpt + '</p>'
+      +   '<span class="cont-reading">Continue Reading</span>'
+      + '</div>'
+      + '</a>';
+  }).join('');
+}
+
+function renderBlogRows(container, posts) {
+  var html = '';
+  posts.forEach(function(post, i) {
+    if (i > 0) html += '<hr class="blog-post-divider">';
+    html += '<a href="blog-post.html?slug=' + post.slug + '" class="blog-post" data-cats="' + post.categories.join(' ') + '">'
+      + '<div class="blog-post-row">'
+      +   '<div class="blog-thumb" style="background-image:url(\\'' + post.thumb + '\\');"></div>'
+      +   '<div class="blog-post-text">'
+      +     '<div class="blog-post-meta"><span>' + post.date + '</span><span class="pipe">|</span><span>' + getCategoryLabel(post.categories) + '</span></div>'
+      +     '<h4>' + post.title + '</h4>'
+      +     '<p>' + post.excerpt + '</p>'
+      +     '<span class="cont-reading">Continue Reading</span>'
+      +   '</div>'
+      + '</div>'
+      + '</a>';
+  });
+  container.innerHTML = html;
+}
+
+function renderRecentPosts(container, currentSlug) {
+  var recent = BLOG_POSTS.filter(function(p) { return p.slug !== currentSlug; }).slice(0, 5);
+  container.innerHTML = recent.map(function(post) {
+    return '<a href="blog-post.html?slug=' + post.slug + '" class="recent-post">'
+      + '<div class="recent-post-thumb" style="background-image:url(\\'' + post.thumb + '\\');"></div>'
+      + '<div class="recent-post-info"><p class="recent-post-title">' + post.title + '</p><p class="recent-post-date">' + post.date + '</p></div>'
+      + '</a>';
+  }).join('');
+}
+`;
+}
+
+// ── SIDEBAR ──
+function renderSidebar() {
+  var list = document.getElementById('postList');
+  if (!posts.length) {
+    list.innerHTML = '<div style="padding:12px 24px;font-size:12px;color:rgba(255,255,255,0.2);">No posts yet</div>';
+    return;
+  }
+  list.innerHTML = posts.map(function(p) {
+    return '<div class="post-item' + (p.slug === currentSlug ? ' active' : '') + '" onclick="loadPost(\'' + p.slug + '\')">'
+      + '<div class="post-item-title">' + p.title + '</div>'
+      + '<div class="post-item-meta">'
+      +   '<span>' + p.date + '</span>'
+      +   p.categories.map(function(c) { return '<span class="post-item-cat">' + c + '</span>'; }).join('')
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+// ── LOAD POST INTO EDITOR ──
+function loadPost(slug) {
+  currentSlug = slug;
+  var p = posts.find(function(x) { return x.slug === slug; });
+  if (!p) return;
+  document.getElementById('fTitle').value   = p.title;
+  document.getElementById('fDate').value    = p.date;
+  document.getElementById('fExcerpt').value = p.excerpt;
+  document.getElementById('fHero').value    = p.hero;
+  document.getElementById('fThumb').value   = p.thumb !== p.hero ? p.thumb : '';
+  document.getElementById('fContent').value = p.content.trim();
+  document.getElementById('editorEyebrow').textContent = 'Editing Post';
+  document.getElementById('deleteBtn').style.display = 'inline-block';
+  document.getElementById('slugPreview').textContent = slug;
+  // Set selected cats
+  allCategories = allCategories.concat(p.categories).filter(function(c, i, a) { return a.indexOf(c) === i; });
+  renderCats(p.categories);
+  renderSidebar();
+  updatePreview();
+}
+
+// ── NEW POST ──
+function newPost() {
+  currentSlug = null;
+  document.getElementById('fTitle').value   = '';
+  document.getElementById('fDate').value    = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('fExcerpt').value = '';
+  document.getElementById('fHero').value    = '';
+  document.getElementById('fThumb').value   = '';
+  document.getElementById('fContent').value = '';
+  document.getElementById('editorEyebrow').textContent = 'New Post';
+  document.getElementById('deleteBtn').style.display = 'none';
+  document.getElementById('slugPreview').textContent = '—';
+  renderCats([]);
+  renderSidebar();
+  updatePreview();
+  document.getElementById('fTitle').focus();
+}
+
+// ── SLUG ──
+function toSlug(str) {
+  return str.toLowerCase().trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+function syncSlug() {
+  if (!currentSlug) {
+    document.getElementById('slugPreview').textContent = toSlug(document.getElementById('fTitle').value) || '—';
+  }
+}
+
+// ── CATEGORIES ──
+var selectedCats = [];
+function renderCats(selected) {
+  if (selected !== undefined) selectedCats = selected.slice();
+  var wrap = document.getElementById('catsWrap');
+  wrap.innerHTML = allCategories.map(function(c) {
+    return '<button class="cat-chip' + (selectedCats.indexOf(c) !== -1 ? ' selected' : '') + '" onclick="toggleCat(\'' + c + '\')">' + c + '</button>';
+  }).join('') + '<button class="cat-chip-add" onclick="addNewCat()">+ New</button>';
+}
+function toggleCat(c) {
+  var i = selectedCats.indexOf(c);
+  if (i === -1) selectedCats.push(c); else selectedCats.splice(i, 1);
+  renderCats();
+  updatePreview();
+}
+function addNewCat() {
+  var wrap = document.getElementById('catsWrap');
+  var inp = document.createElement('input');
+  inp.className = 'cat-new-input';
+  inp.placeholder = 'category';
+  wrap.appendChild(inp);
+  inp.focus();
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      var v = inp.value.trim().toLowerCase();
+      if (v && allCategories.indexOf(v) === -1) allCategories.push(v);
+      if (v) { selectedCats.push(v); }
+      renderCats();
+    }
+    if (e.key === 'Escape') renderCats();
+  });
+  inp.addEventListener('blur', function() {
+    var v = inp.value.trim().toLowerCase();
+    if (v && allCategories.indexOf(v) === -1) allCategories.push(v);
+    if (v) selectedCats.push(v);
+    renderCats();
+  });
+}
+
+// ── PREVIEW ──
+function updatePreview() {
+  var title   = document.getElementById('fTitle').value   || 'Post Title';
+  var date    = document.getElementById('fDate').value    || '—';
+  var hero    = document.getElementById('fHero').value;
+  var content = document.getElementById('fContent').value;
+  var cats    = selectedCats.length ? selectedCats.map(function(c){ return c.charAt(0).toUpperCase()+c.slice(1); }).join(', ') : '—';
+
+  var heroHtml = hero
+    ? '<img class="prev-hero" src="' + hero + '" alt="">'
+    : '<div class="prev-hero-placeholder"><span>Hero Image</span></div>';
+
+  document.getElementById('previewBody').innerHTML =
+    '<p class="prev-meta"><span>' + date + '</span><span class="pipe">|</span><span>' + cats + '</span></p>'
+    + '<h2 class="prev-title">' + title + '</h2>'
+    + heroHtml
+    + '<div class="prev-content">' + (content || '<p style="color:#bbb;font-style:italic;">Content will appear here...</p>') + '</div>';
+}
+
+// ── PUBLISH ──
+function publishPost() {
+  var title   = document.getElementById('fTitle').value.trim();
+  var date    = document.getElementById('fDate').value.trim();
+  var excerpt = document.getElementById('fExcerpt').value.trim();
+  var hero    = document.getElementById('fHero').value.trim();
+  var thumb   = document.getElementById('fThumb').value.trim() || hero;
+  var content = document.getElementById('fContent').value.trim();
+  var slug    = currentSlug || toSlug(title);
+
+  if (!title)   { alert('Title is required.'); return; }
+  if (!slug)    { alert('Could not generate slug from title.'); return; }
+  if (!content) { alert('Content is required.'); return; }
+  if (!selectedCats.length) { alert('Select at least one category.'); return; }
+
+  var post = { slug: slug, title: title, date: date, categories: selectedCats.slice(), excerpt: excerpt, thumb: thumb, hero: hero, content: '\n      ' + content + '\n    ' };
+
+  // Update or add
+  var idx = posts.findIndex(function(p) { return p.slug === slug; });
+  if (idx !== -1) posts[idx] = post; else posts.push(post);
+  currentSlug = slug;
+
+  commitToGitHub();
+}
+
+// ── DELETE ──
+function deletePost() {
+  if (!currentSlug) return;
+  if (!confirm('Delete "' + currentSlug + '"? This cannot be undone.')) return;
+  posts = posts.filter(function(p) { return p.slug !== currentSlug; });
+  currentSlug = null;
+  commitToGitHub(true);
+}
+
+// ── GITHUB COMMIT ──
+function commitToGitHub(isDelete) {
+  setStatus('saving', 'Publishing...');
+  document.getElementById('saveBtn').disabled = true;
+  document.getElementById('topStatus').textContent = 'Publishing...';
+
+  // First get current SHA
+  fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE + '?ref=' + GH_BRANCH, {
+    headers: { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    var sha     = data.sha;
+    var newContent = buildBlogsJS();
+    var encoded = btoa(unescape(encodeURIComponent(newContent)));
+    var message = isDelete ? 'Delete post via admin' : 'Publish post: ' + document.getElementById('fTitle').value.trim();
+
+    return fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: message, content: encoded, sha: sha, branch: GH_BRANCH })
+    });
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.content) {
+      setStatus('success', 'Published ✓');
+      document.getElementById('topStatus').textContent = 'Published — Vercel deploying...';
+      renderSidebar();
+      if (isDelete) newPost();
+      setTimeout(function() {
+        setStatus('idle', '—');
+        document.getElementById('topStatus').textContent = 'Ready';
+      }, 4000);
+    } else {
+      throw new Error(data.message || 'Commit failed');
+    }
+  })
+  .catch(function(e) {
+    setStatus('error', 'Error: ' + e.message);
+    document.getElementById('topStatus').textContent = 'Publish failed';
+  })
+  .finally(function() {
+    document.getElementById('saveBtn').disabled = false;
+  });
+}
+
+// ── STATUS ──
+function setStatus(type, msg) {
+  var pill = document.getElementById('statusPill');
+  pill.className = 'status-pill ' + type;
+  pill.textContent = msg;
+}
+
+// Init cats with defaults
+renderCats([]);
+</script>
+</body>
+</html>
