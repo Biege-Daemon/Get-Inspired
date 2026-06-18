@@ -602,20 +602,21 @@ document.querySelectorAll('.site-nav a,.mobile-nav a').forEach(function(a){
   window.addEventListener('resize',update);
   update();startAuto();
 })();
-// Blog filter
+// Blog — dynamic from blogs.js
 (function(){
-  var btns=document.querySelectorAll('.blog-filter-btn');
-  var cards=document.querySelectorAll('.blog-card');
-  btns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var filter=this.dataset.filter;
-      btns.forEach(function(b){b.classList.remove('active');});
-      this.classList.add('active');
-      cards.forEach(function(card){
-        card.style.display=(filter==='all'||card.dataset.categories.includes(filter))?'block':'none';
-      });
-    });
-  });
+renderBlogCards(document.getElementById('blogGrid'), BLOG_POSTS);
+var btns = document.querySelectorAll('.blog-filter-btn');
+btns.forEach(function(btn) {
+btn.addEventListener('click', function() {
+var filter = this.dataset.filter;
+btns.forEach(function(b) { b.classList.remove('active'); });
+this.classList.add('active');
+var filtered = filter === 'all'
+? BLOG_POSTS
+: BLOG_POSTS.filter(function(p) { return p.categories.indexOf(filter) !== -1; });
+renderBlogCards(document.getElementById('blogGrid'), filtered);
+});
+});
 })();
 </script>
 <button class="fixed-hamburger" id="fixedHamburger" aria-label="Menu">
