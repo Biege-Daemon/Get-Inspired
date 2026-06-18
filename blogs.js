@@ -47,6 +47,20 @@ var BLOG_POSTS = [
     
     
     `
+  },
+  {
+    slug: "test",
+    title: "Test",
+    date: "18 June 2026",
+    categories: ["happiness"],
+    excerpt: "Test again",
+    thumb: "https://in.linkedin.com/in/arpan-ghosh-966008128",
+    hero: "https://in.linkedin.com/in/arpan-ghosh-966008128",
+    content: `
+
+      Test
+    
+    `
   }
   // ── ADD NEW POSTS BELOW THIS LINE ──
 ];
