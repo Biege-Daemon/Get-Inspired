@@ -7,19 +7,21 @@ var BLOG_POSTS = [
     title: "Get Started",
     date: "23 March 2026",
     categories: ["happiness","life"],
-    excerpt: "The message I want to share with you today is âGET STARTEDâ.",
+    excerpt: "The message I want to share with you today is Ã¢ÂÂGET STARTEDÃ¢ÂÂ.",
     thumb: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:200",
     hero: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:1280",
     content: `
 
 
-      <p>The message I want to share with you today is <strong>âGET STARTEDâ</strong>.</p>
-      <p>You donât need to have a perfect plan.<br>You donât need to know all the answers.</p>
+
+      <p>The message I want to share with you today is <strong>Ã¢ÂÂGET STARTEDÃ¢ÂÂ</strong>.</p>
+      <p>You donÃ¢ÂÂt need to have a perfect plan.<br>You donÃ¢ÂÂt need to know all the answers.</p>
       <p>You just need momentum. You just need to <strong>start</strong>.</p>
-      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the âright timeâ and trust me there is no better âright timeâ than NOW. You can read hundreds of articles, watch endless videos, and make the best plansâ¦But the simple truth is:</p>
-      <p>The book you want to write wonât write itself.<br>The weight you want to lose wonât lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
-      <p>Clarity doesnât come before action. It comes <strong>because of it</strong>.</p>
+      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the Ã¢ÂÂright timeÃ¢ÂÂ and trust me there is no better Ã¢ÂÂright timeÃ¢ÂÂ than NOW. You can read hundreds of articles, watch endless videos, and make the best plansÃ¢ÂÂ¦But the simple truth is:</p>
+      <p>The book you want to write wonÃ¢ÂÂt write itself.<br>The weight you want to lose wonÃ¢ÂÂt lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
+      <p>Clarity doesnÃ¢ÂÂt come before action. It comes <strong>because of it</strong>.</p>
       <p>Start messy. Start unsure.<br>But, start anyway and make the rest of your life to be the best of your life.</p>
+    
     
     
     `
@@ -35,15 +37,17 @@ var BLOG_POSTS = [
     content: `
 
 
+
       <p>Two seeds lay side by side in the soil.</p>
-      <p>The first seed said,<br>âI will grow. I will push my roots deep into the earth and reach for the sun.â</p>
-      <p>The second seed said,<br>âWhat if the soil is hard? What if the sun burns me?â</p>
+      <p>The first seed said,<br>Ã¢ÂÂI will grow. I will push my roots deep into the earth and reach for the sun.Ã¢ÂÂ</p>
+      <p>The second seed said,<br>Ã¢ÂÂWhat if the soil is hard? What if the sun burns me?Ã¢ÂÂ</p>
       <p>So it waited.</p>
       <p>Spring arrived.<br>The first seed became a flower. The second seed was eaten by a bird.</p>
-      <p>Fear doesnât just delay dreams. It destroys them.</p>
-      <p>We often believe weâre being âsafeâ when we wait.<br>But life doesnât reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
-      <p>Thereâs a quote Iâve fallen in love with âThe magic youâre looking for is in the work you are avoiding.â</p>
+      <p>Fear doesnÃ¢ÂÂt just delay dreams. It destroys them.</p>
+      <p>We often believe weÃ¢ÂÂre being Ã¢ÂÂsafeÃ¢ÂÂ when we wait.<br>But life doesnÃ¢ÂÂt reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
+      <p>ThereÃ¢ÂÂs a quote IÃ¢ÂÂve fallen in love with Ã¢ÂÂThe magic youÃ¢ÂÂre looking for is in the work you are avoiding.Ã¢ÂÂ</p>
       <p>So, face your fears and make the rest of your life to be the best of your life.</p>
+    
     
     
     `
@@ -58,7 +62,7 @@ var BLOG_POSTS = [
     hero: "https://www.magnific.com/free-photos-vectors/beautiful",
     content: `
 
-      Test
+      Test again
     
     `
   }
