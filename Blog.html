@@ -23,43 +23,18 @@ img{display:block;max-width:100%;}
 .site-nav{display:flex;justify-content:center;gap:48px;padding:24px 40px;}
 .site-nav li a{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2.996px;line-height:24px;display:inline-block;padding:10px 0 2px;border-bottom:1px solid transparent;margin-bottom:-2px;transition:border-color 0.15s;}
 .site-nav li a.active,.site-nav li a:hover{border-bottom-color:#4C3B37;}
-/* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;gap:5px;background:none;border:none;padding:0;flex-shrink:0;}
 .hamburger span{display:block;width:24px;height:2px;background:#151515;transition:all 0.3s ease;transform-origin:center;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-nav{
-  display:flex;
-  flex-direction:column;
-  position:fixed;
-  bottom:88px;
-  right:16px;
-  z-index:9997;
-  background:#fff;
-  border:1px solid rgba(76,59,55,0.15);
-  border-radius:12px;
-  box-shadow:0 8px 32px rgba(0,0,0,0.18);
-  overflow:hidden;
-  min-width:200px;
-  transform-origin:bottom right;
-  transform:scale(0.88);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-}
-.mobile-nav.open{
-  opacity:1;
-  transform:scale(1);
-  visibility:visible;
-  pointer-events:auto;
-}
+.mobile-nav{display:flex;flex-direction:column;position:fixed;bottom:88px;right:16px;z-index:9997;background:#fff;border:1px solid rgba(76,59,55,0.15);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);overflow:hidden;min-width:200px;transform-origin:bottom right;transform:scale(0.88);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;}
+.mobile-nav.open{opacity:1;transform:scale(1);visibility:visible;pointer-events:auto;}
 .mobile-nav li a{display:block;padding:14px 24px;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:400;color:#151515;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid rgba(76,59,55,0.07);}
 .mobile-nav li:last-child a{border-bottom:none;}
 .mobile-nav li a.active,.mobile-nav li a:hover{color:#4C3B37;background:rgba(76,59,55,0.04);}
 .mobile-header-row{display:none;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid rgba(76,59,55,0.07);}
-/* ── FOLLOW ME ── */
+/* ── FOLLOW ── */
 .follow-section{background:#fff;padding:40px 0;text-align:center;}
 .follow-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
 .follow-section h1{font-family:'Fjalla One',arial,sans-serif;font-size:30px;font-weight:400;color:#1B1B1B;text-transform:uppercase;letter-spacing:0.93px;line-height:37.5px;margin-bottom:32px;}
@@ -131,23 +106,8 @@ img{display:block;max-width:100%;}
   .sidebar-cats{flex-direction:row;flex-wrap:wrap;gap:10px;}
   .site-footer{padding:40px 24px 32px;}
   .footer-links{flex-direction:column;gap:10px;align-items:center;}
-  }
-
-/* ── FIXED HAMBURGER (mobile bottom-right) ── */
-.fixed-hamburger{
-  display:none;
-  position:fixed;
-  bottom:24px;right:24px;
-  width:52px;height:52px;
-  border-radius:50%;
-  background:#4C3B37;
-  align-items:center;justify-content:center;
-  cursor:pointer;z-index:9998;
-  box-shadow:0 4px 20px rgba(0,0,0,0.28);
-  border:none;
-  flex-direction:column;gap:5px;
-  transition:transform 0.2s;
 }
+.fixed-hamburger{display:none;position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;background:#4C3B37;align-items:center;justify-content:center;cursor:pointer;z-index:9998;box-shadow:0 4px 20px rgba(0,0,0,0.28);border:none;flex-direction:column;gap:5px;transition:transform 0.2s;}
 .fixed-hamburger:hover{transform:scale(1.07);}
 .fixed-hamburger span{display:block;width:20px;height:2px;background:#fff;transition:all 0.3s ease;transform-origin:center;}
 .fixed-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -170,7 +130,6 @@ img{display:block;max-width:100%;}
     </ul></nav>
   </div>
   <div class="mobile-header-row">
-    <span></span>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <nav><ul class="mobile-nav" id="mobileNav">
@@ -199,38 +158,10 @@ img{display:block;max-width:100%;}
     <p class="blog-section-sub">Ideas can be life-changing.</p>
     <p class="blog-section-sub">Sometimes all you need in life is just one good idea.</p>
     <div class="blog-layout">
-      <div class="blog-posts" id="blogPosts">
-        <a href="Get-Started.html" class="blog-post" data-cats="happiness life">
-          <div class="blog-post-row">
-            <div class="blog-thumb" style="background-image:url('https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:200');"></div>
-            <div class="blog-post-text">
-              <div class="blog-post-meta"><span>23 March 2026</span><span class="pipe">|</span><span>Happiness, Life</span></div>
-              <h4>Get Started</h4>
-              <p>The message I want to share with you today is &#8220;GET STARTED&#8221;.</p>
-              <span class="cont-reading">Continue Reading</span>
-            </div>
-          </div>
-        </a>
-        <hr class="blog-post-divider">
-        <a href="The-Two-Seeds.html" class="blog-post" data-cats="life">
-          <div class="blog-post-row">
-            <div class="blog-thumb" style="background-image:url('https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:200');"></div>
-            <div class="blog-post-text">
-              <div class="blog-post-meta"><span>23 March 2026</span><span class="pipe">|</span><span>Life</span></div>
-              <h4>The Two Seeds</h4>
-              <p>Two seeds lay side by side in the soil.</p>
-              <span class="cont-reading">Continue Reading</span>
-            </div>
-          </div>
-        </a>
-      </div>
+      <div class="blog-posts" id="blogPosts"><!-- rendered by blogs.js --></div>
       <div class="blog-sidebar">
         <h4 class="sidebar-title">Categories</h4>
-        <div class="sidebar-cats" id="sidebarCats">
-          <a href="#" class="active" data-filter="all">All Posts</a>
-          <a href="#" data-filter="happiness">Happiness</a>
-          <a href="#" data-filter="life">Life</a>
-        </div>
+        <div class="sidebar-cats" id="sidebarCats"><!-- rendered by blogs.js --></div>
       </div>
     </div>
   </div>
@@ -247,24 +178,23 @@ img{display:block;max-width:100%;}
     <a href="https://mygetinspired.com/terms-and-conditions">Terms and Conditions</a>
   </div>
 </footer>
-</div>
+<button class="fixed-hamburger" id="fixedHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+
+<script src="blogs.js"></script>
 <script>
+// ── Hamburger
 document.addEventListener('DOMContentLoaded', function() {
   var mobileNav = document.getElementById('mobileNav');
   var fixedBtn  = document.getElementById('fixedHamburger');
   var headerBtn = document.getElementById('hamburger');
-
   function toggleMenu() {
     if (!mobileNav) return;
     var isOpen = mobileNav.classList.toggle('open');
-    if (fixedBtn)  fixedBtn.classList.toggle('open',  isOpen);
+    if (fixedBtn)  fixedBtn.classList.toggle('open', isOpen);
     if (headerBtn) headerBtn.classList.toggle('open', isOpen);
   }
-
-  if (fixedBtn)  fixedBtn.addEventListener('click',  toggleMenu);
+  if (fixedBtn)  fixedBtn.addEventListener('click', toggleMenu);
   if (headerBtn) headerBtn.addEventListener('click', toggleMenu);
-
-  // Close menu when a nav link is clicked
   if (mobileNav) {
     mobileNav.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function() {
@@ -275,15 +205,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-document.querySelectorAll('.site-nav a,.mobile-nav a').forEach(function(a){ a.addEventListener('click',function(){ document.querySelectorAll('.site-nav a,.mobile-nav a').forEach(function(x){x.classList.remove('active');}); this.classList.add('active'); }); });
-(function(){
-  var cats=document.querySelectorAll('#sidebarCats a');
-  var posts=document.querySelectorAll('#blogPosts .blog-post');
-  cats.forEach(function(cat){ cat.addEventListener('click',function(e){ e.preventDefault(); var filter=this.dataset.filter; cats.forEach(function(c){c.classList.remove('active');}); this.classList.add('active'); posts.forEach(function(post){ var show=filter==='all'||post.dataset.cats.includes(filter); post.style.display=show?'block':'none'; var next=post.nextElementSibling; if(next&&next.tagName==='HR') next.style.display=show?'block':'none'; }); }); });
-})();
+
+// ── Build all unique categories
+var allCats = [];
+BLOG_POSTS.forEach(function(p) {
+  p.categories.forEach(function(c) {
+    if (allCats.indexOf(c) === -1) allCats.push(c);
+  });
+});
+
+// ── Read ?cat= from URL for pre-filtering
+var urlCat = new URLSearchParams(window.location.search).get('cat') || 'all';
+
+// ── Render sidebar cats
+var catsContainer = document.getElementById('sidebarCats');
+catsContainer.innerHTML = '<a href="#" data-filter="all" class="' + (urlCat === 'all' ? 'active' : '') + '">All Posts</a>'
+  + allCats.map(function(c) {
+      return '<a href="#" data-filter="' + c + '" class="' + (urlCat === c ? 'active' : '') + '">'
+        + c.charAt(0).toUpperCase() + c.slice(1) + '</a>';
+    }).join('');
+
+// ── Render posts
+function renderPosts(filter) {
+  var posts = filter === 'all'
+    ? BLOG_POSTS
+    : BLOG_POSTS.filter(function(p) { return p.categories.indexOf(filter) !== -1; });
+  renderBlogRows(document.getElementById('blogPosts'), posts);
+}
+
+renderPosts(urlCat);
+
+// ── Category filter click
+catsContainer.addEventListener('click', function(e) {
+  var link = e.target.closest('a[data-filter]');
+  if (!link) return;
+  e.preventDefault();
+  var filter = link.dataset.filter;
+  catsContainer.querySelectorAll('a').forEach(function(a) { a.classList.remove('active'); });
+  link.classList.add('active');
+  renderPosts(filter);
+});
 </script>
-<button class="fixed-hamburger" id="fixedHamburger" aria-label="Menu">
-  <span></span><span></span><span></span>
-</button>
 </body>
 </html>
