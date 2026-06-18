@@ -523,7 +523,7 @@ function setContent(html) { document.getElementById('fContent').innerHTML = html
 function updatePreview() {
   var title   = document.getElementById('fTitle').value   || 'Post Title';
   var date    = document.getElementById('fDate').value    || '—';
-  var hero    = document.getElementById('fHero').value;
+  var hero    = sanitizeImgUrl(document.getElementById('fHero').value);
   var content = getContent();
   var cats    = selectedCats.length ? selectedCats.map(function(c){ return c.charAt(0).toUpperCase()+c.slice(1); }).join(', ') : '—';
 
@@ -543,8 +543,8 @@ function publishPost() {
   var title   = document.getElementById('fTitle').value.trim();
   var date    = document.getElementById('fDate').value.trim();
   var excerpt = document.getElementById('fExcerpt').value.trim();
-  var hero    = document.getElementById('fHero').value.trim();
-  var thumb   = document.getElementById('fThumb').value.trim() || hero;
+  var hero    = sanitizeImgUrl(document.getElementById('fHero').value.trim());
+var thumb   = sanitizeImgUrl(document.getElementById('fThumb').value.trim()) || hero;
 var content = getContent();
   var slug    = currentSlug || toSlug(title);
 
@@ -623,6 +623,16 @@ function commitToGitHub(isDelete) {
   });
 }
 
+function sanitizeImgUrl(url) {
+  url = url.trim();
+  // Strip wsimg's on-the-fly resize suffix — it can time out (504)
+  // depending on target size/params. The bare file URL always works,
+  // and CSS already scales images down for display.
+  var wsimgMatch = url.match(/^(https?:\/\/img\d*\.wsimg\.com\/[^\s]+?)\/:\/.*$/);
+  if (wsimgMatch) return wsimgMatch[1];
+  return url;
+}
+  
 // ── STATUS ──
 function setStatus(type, msg) {
   var pill = document.getElementById('statusPill');
