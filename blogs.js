@@ -7,18 +7,20 @@ var BLOG_POSTS = [
     title: "Get Started",
     date: "23 March 2026",
     categories: ["happiness","life"],
-    excerpt: "The message I want to share with you today is “GET STARTED”.",
+    excerpt: "The message I want to share with you today is âGET STARTEDâ.",
     thumb: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:200",
     hero: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:1280",
     content: `
 
-      <p>The message I want to share with you today is <strong>“GET STARTED”</strong>.</p>
-      <p>You don’t need to have a perfect plan.<br>You don’t need to know all the answers.</p>
+
+      <p>The message I want to share with you today is <strong>âGET STARTEDâ</strong>.</p>
+      <p>You donât need to have a perfect plan.<br>You donât need to know all the answers.</p>
       <p>You just need momentum. You just need to <strong>start</strong>.</p>
-      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the “right time” and trust me there is no better “right time” than NOW. You can read hundreds of articles, watch endless videos, and make the best plans…But the simple truth is:</p>
-      <p>The book you want to write won’t write itself.<br>The weight you want to lose won’t lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
-      <p>Clarity doesn’t come before action. It comes <strong>because of it</strong>.</p>
+      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the âright timeâ and trust me there is no better âright timeâ than NOW. You can read hundreds of articles, watch endless videos, and make the best plansâ¦But the simple truth is:</p>
+      <p>The book you want to write wonât write itself.<br>The weight you want to lose wonât lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
+      <p>Clarity doesnât come before action. It comes <strong>because of it</strong>.</p>
       <p>Start messy. Start unsure.<br>But, start anyway and make the rest of your life to be the best of your life.</p>
+    
     
     `
   },
@@ -32,29 +34,17 @@ var BLOG_POSTS = [
     hero: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:1280",
     content: `
 
+
       <p>Two seeds lay side by side in the soil.</p>
-      <p>The first seed said,<br>“I will grow. I will push my roots deep into the earth and reach for the sun.”</p>
-      <p>The second seed said,<br>“What if the soil is hard? What if the sun burns me?”</p>
+      <p>The first seed said,<br>âI will grow. I will push my roots deep into the earth and reach for the sun.â</p>
+      <p>The second seed said,<br>âWhat if the soil is hard? What if the sun burns me?â</p>
       <p>So it waited.</p>
       <p>Spring arrived.<br>The first seed became a flower. The second seed was eaten by a bird.</p>
-      <p>Fear doesn’t just delay dreams. It destroys them.</p>
-      <p>We often believe we’re being “safe” when we wait.<br>But life doesn’t reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
-      <p>There’s a quote I’ve fallen in love with “The magic you’re looking for is in the work you are avoiding.”</p>
+      <p>Fear doesnât just delay dreams. It destroys them.</p>
+      <p>We often believe weâre being âsafeâ when we wait.<br>But life doesnât reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
+      <p>Thereâs a quote Iâve fallen in love with âThe magic youâre looking for is in the work you are avoiding.â</p>
       <p>So, face your fears and make the rest of your life to be the best of your life.</p>
     
-    `
-  },
-  {
-    slug: "test",
-    title: "Test",
-    date: "18 June 2026",
-    categories: ["life"],
-    excerpt: "Test",
-    thumb: "",
-    hero: "",
-    content: `
-
-      Test<div><b>Tes</b></div><div>T</div><div>e</div><div>s</div><div>t</div><div>1</div><div><br></div>
     
     `
   }
