@@ -1,68 +1,65 @@
 // ── BLOGS.JS — Single source of truth for all blog posts
 // To publish a new post: add one object to this array.
-// Fields:
-//   slug        — URL identifier, e.g. "get-started" → /blog-post.html?slug=get-started
-//   title       — Post title (displayed as heading)
-//   date        — Display date string
-//   categories  — Array of lowercase strings, e.g. ['happiness', 'life']
-//   excerpt     — Short teaser shown on cards
-//   thumb       — Thumbnail image URL (used in blog cards, sidebars)
-//   hero        — Full-width hero image URL (used inside the post)
-//   content     — HTML string of the post body
 
 var BLOG_POSTS = [
   {
-    slug: 'get-started',
-    title: 'Get Started',
-    date: '23 March 2026',
-    categories: ['happiness', 'life'],
-    excerpt: 'The message I want to share with you today is \u201cGET STARTED\u201d.',
-    thumb: 'https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:200',
-    hero:  'https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:1280',
+    slug: "get-started",
+    title: "Get Started",
+    date: "23 March 2026",
+    categories: ["happiness","life"],
+    excerpt: "The message I want to share with you today is “GET STARTED”.",
+    thumb: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:200",
+    hero: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/start2.jpg/:/rs=w:1280",
     content: `
-      <p>The message I want to share with you today is <strong>\u201cGET STARTED\u201d</strong>.</p>
-      <p>You don\u2019t need to have a perfect plan.<br>You don\u2019t need to know all the answers.</p>
+
+      <p>The message I want to share with you today is <strong>“GET STARTED”</strong>.</p>
+      <p>You don’t need to have a perfect plan.<br>You don’t need to know all the answers.</p>
       <p>You just need momentum. You just need to <strong>start</strong>.</p>
-      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the \u201cright time\u201d and trust me there is no better \u201cright time\u201d than NOW. You can read hundreds of articles, watch endless videos, and make the best plans\u2026But the simple truth is:</p>
-      <p>The book you want to write won\u2019t write itself.<br>The weight you want to lose won\u2019t lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
-      <p>Clarity doesn\u2019t come before action. It comes <strong>because of it</strong>.</p>
+      <p>Most people stay stuck planning, overthinking, collecting information and waiting for the “right time” and trust me there is no better “right time” than NOW. You can read hundreds of articles, watch endless videos, and make the best plans…But the simple truth is:</p>
+      <p>The book you want to write won’t write itself.<br>The weight you want to lose won’t lose itself. Nothing moves until you do and nothing changes until you take the first step.</p>
+      <p>Clarity doesn’t come before action. It comes <strong>because of it</strong>.</p>
       <p>Start messy. Start unsure.<br>But, start anyway and make the rest of your life to be the best of your life.</p>
+    
     `
   },
   {
-    slug: 'the-two-seeds',
-    title: 'The Two Seeds',
-    date: '23 March 2026',
-    categories: ['life'],
-    excerpt: 'Two seeds lay side by side in the soil.',
-    thumb: 'https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:200',
-    hero:  'https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:1280',
+    slug: "the-two-seeds",
+    title: "The Two Seeds",
+    date: "23 March 2026",
+    categories: ["life"],
+    excerpt: "Two seeds lay side by side in the soil.",
+    thumb: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:200",
+    hero: "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:1280",
     content: `
+
       <p>Two seeds lay side by side in the soil.</p>
-      <p>The first seed said,<br>\u201cI will grow. I will push my roots deep into the earth and reach for the sun.\u201d</p>
-      <p>The second seed said,<br>\u201cWhat if the soil is hard? What if the sun burns me?\u201d</p>
+      <p>The first seed said,<br>“I will grow. I will push my roots deep into the earth and reach for the sun.”</p>
+      <p>The second seed said,<br>“What if the soil is hard? What if the sun burns me?”</p>
       <p>So it waited.</p>
       <p>Spring arrived.<br>The first seed became a flower. The second seed was eaten by a bird.</p>
-      <p>Fear doesn\u2019t just delay dreams. It destroys them.</p>
-      <p>We often believe we\u2019re being \u201csafe\u201d when we wait.<br>But life doesn\u2019t reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
-      <p>There\u2019s a quote I\u2019ve fallen in love with \u201cThe magic you\u2019re looking for is in the work you are avoiding.\u201d</p>
+      <p>Fear doesn’t just delay dreams. It destroys them.</p>
+      <p>We often believe we’re being “safe” when we wait.<br>But life doesn’t reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>
+      <p>There’s a quote I’ve fallen in love with “The magic you’re looking for is in the work you are avoiding.”</p>
       <p>So, face your fears and make the rest of your life to be the best of your life.</p>
+    
+    `
+  },
+  {
+    slug: "test",
+    title: "Test",
+    date: "18 June 2026",
+    categories: ["life"],
+    excerpt: "Test",
+    thumb: "",
+    hero: "",
+    content: `
+
+      Test<div><b>Tes</b></div><div>T</div><div>e</div><div>s</div><div>t</div><div>1</div><div><br></div>
+    
     `
   }
   // ── ADD NEW POSTS BELOW THIS LINE ──
-  // {
-  //   slug: 'your-slug-here',
-  //   title: 'Your Title Here',
-  //   date: '18 June 2026',
-  //   categories: ['life'],
-  //   excerpt: 'Opening line or short teaser.',
-  //   thumb: 'IMAGE_URL',
-  //   hero:  'IMAGE_URL',
-  //   content: `<p>Your post content here.</p>`
-  // }
 ];
-
-// ── Helpers used across pages ──
 
 function getPostBySlug(slug) {
   return BLOG_POSTS.find(function(p) { return p.slug === slug; }) || null;
@@ -74,9 +71,6 @@ function getCategoryLabel(cats) {
   }).join(', ');
 }
 
-// Renders an array of posts into blog cards (used on index + blog pages)
-// container: DOM element to render into
-// posts: array from BLOG_POSTS (optionally filtered)
 function renderBlogCards(container, posts) {
   container.innerHTML = posts.map(function(post) {
     return '<a href="blog-post.html?slug=' + post.slug + '" class="blog-card" data-categories="' + post.categories.join(' ') + '">'
@@ -91,7 +85,6 @@ function renderBlogCards(container, posts) {
   }).join('');
 }
 
-// Renders blog list rows (used on Blog.html)
 function renderBlogRows(container, posts) {
   var html = '';
   posts.forEach(function(post, i) {
@@ -111,7 +104,6 @@ function renderBlogRows(container, posts) {
   container.innerHTML = html;
 }
 
-// Renders recent posts sidebar (excludes current slug)
 function renderRecentPosts(container, currentSlug) {
   var recent = BLOG_POSTS.filter(function(p) { return p.slug !== currentSlug; }).slice(0, 5);
   container.innerHTML = recent.map(function(post) {
