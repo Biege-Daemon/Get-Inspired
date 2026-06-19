@@ -48,8 +48,8 @@ function getCategoryLabel(cats){
 }
 function renderBlogCards(container,posts){
   container.innerHTML=posts.map(function(post){
-    return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+">"'
-      +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
+return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+'">'
+  +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-card-body">'
       +'<div class="blog-meta"><span>'+post.date+'</span><span class="pipe">|</span><span>'+getCategoryLabel(post.categories)+'</span></div>'
       +'<h4>'+post.title+'</h4>'
