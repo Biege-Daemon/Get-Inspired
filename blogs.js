@@ -36,8 +36,8 @@ function getCategoryLabel(cats){
 }
 function renderBlogCards(container,posts){
   container.innerHTML=posts.map(function(post){
-    return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+">"'
-      +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
+return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+'">'
+  +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-card-body">'
       +'<div class="blog-meta"><span>'+post.date+'</span><span class="pipe">|</span><span>'+getCategoryLabel(post.categories)+'</span></div>'
       +'<h4>'+post.title+'</h4>'
@@ -50,8 +50,8 @@ function renderBlogRows(container,posts){
   var html='';
   posts.forEach(function(post,i){
     if(i>0)html+='<hr class="blog-post-divider">';
-    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+">"'
-      +'<div class="blog-post-row">'
+html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+'">'
+  +'<div class="blog-post-row">'
       +'<div class="blog-thumb" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-post-text">'
       +'<div class="blog-post-meta"><span>'+post.date+'</span><span class="pipe">|</span><span>'+getCategoryLabel(post.categories)+'</span></div>'
