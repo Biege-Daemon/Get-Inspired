@@ -36,7 +36,7 @@ var BLOG_POSTS = [
     "excerpt": "Heyyy",
     "thumb": "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781869878078-get-inspired-logo.png",
     "hero": "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781869878078-get-inspired-logo.png",
-    "content": "Testing 123"
+    "content": "Testing 12"
   }
 ];
 
@@ -48,7 +48,7 @@ function getCategoryLabel(cats){
 }
 function renderBlogCards(container,posts){
   container.innerHTML=posts.map(function(post){
-    return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+">"'
+    return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+'">'
       +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-card-body">'
       +'<div class="blog-meta"><span>'+post.date+'</span><span class="pipe">|</span><span>'+getCategoryLabel(post.categories)+'</span></div>'
@@ -62,7 +62,7 @@ function renderBlogRows(container,posts){
   var html='';
   posts.forEach(function(post,i){
     if(i>0)html+='<hr class="blog-post-divider">';
-    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+">"'
+    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+'">'
       +'<div class="blog-post-row">'
       +'<div class="blog-thumb" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-post-text">'
