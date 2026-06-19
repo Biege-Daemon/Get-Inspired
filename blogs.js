@@ -36,7 +36,7 @@ var BLOG_POSTS = [
     "excerpt": "Heyyy",
     "thumb": "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781869878078-get-inspired-logo.png",
     "hero": "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781869878078-get-inspired-logo.png",
-    "content": "Testing 1"
+    "content": "Testing 123"
   }
 ];
 
