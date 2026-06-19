@@ -62,7 +62,7 @@ function renderBlogRows(container,posts){
   var html='';
   posts.forEach(function(post,i){
     if(i>0)html+='<hr class="blog-post-divider">';
-    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+">"'
+    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+'">'
       +'<div class="blog-post-row">'
       +'<div class="blog-thumb" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-post-text">'
