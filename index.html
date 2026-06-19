@@ -417,13 +417,8 @@ img{display:block;max-width:100%;}
     <p class="little-sub">Ideas can be life-changing.</p>
     <p class="little-sub">Sometimes all you need in life is just one good idea</p>
     <div class="blog-filter-row">
-      <button class="blog-filter-btn active" data-filter="all">All Posts</button>
-      <button class="blog-filter-btn" data-filter="happiness">Happiness</button>
-      <button class="blog-filter-btn" data-filter="life">Life</button>
     </div>
     <div class="blog-grid" id="blogGrid"><!-- rendered by blogs.js --></div>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -604,19 +599,33 @@ document.querySelectorAll('.site-nav a,.mobile-nav a').forEach(function(a){
 })();
 // Blog — dynamic from blogs.js
 (function(){
-renderBlogCards(document.getElementById('blogGrid'), BLOG_POSTS);
-var btns = document.querySelectorAll('.blog-filter-btn');
-btns.forEach(function(btn) {
-btn.addEventListener('click', function() {
-var filter = this.dataset.filter;
-btns.forEach(function(b) { b.classList.remove('active'); });
-this.classList.add('active');
-var filtered = filter === 'all'
-? BLOG_POSTS
-: BLOG_POSTS.filter(function(p) { return p.categories.indexOf(filter) !== -1; });
-renderBlogCards(document.getElementById('blogGrid'), filtered);
-});
-});
+  // Build filter buttons dynamically from BLOG_POSTS categories
+  var allCats = [];
+  BLOG_POSTS.forEach(function(p) {
+    p.categories.forEach(function(c) {
+      if (allCats.indexOf(c) === -1) allCats.push(c);
+    });
+  });
+  var filterRow = document.getElementById('blogFilterRow');
+  filterRow.innerHTML = '<button class="blog-filter-btn active" data-filter="all">All Posts</button>'
+    + allCats.map(function(c) {
+        return '<button class="blog-filter-btn" data-filter="' + c + '">'
+          + c.charAt(0).toUpperCase() + c.slice(1) + '</button>';
+      }).join('');
+
+  renderBlogCards(document.getElementById('blogGrid'), BLOG_POSTS);
+
+  filterRow.addEventListener('click', function(e) {
+    var btn = e.target.closest('.blog-filter-btn');
+    if (!btn) return;
+    var filter = btn.dataset.filter;
+    filterRow.querySelectorAll('.blog-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var filtered = filter === 'all'
+      ? BLOG_POSTS
+      : BLOG_POSTS.filter(function(p) { return p.categories.indexOf(filter) !== -1; });
+    renderBlogCards(document.getElementById('blogGrid'), filtered);
+  });
 })();
 </script>
 <button class="fixed-hamburger" id="fixedHamburger" aria-label="Menu">
