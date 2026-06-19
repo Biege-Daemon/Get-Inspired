@@ -25,18 +25,6 @@ var BLOG_POSTS = [
     "thumb": "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:200",
     "hero": "https://img1.wsimg.com/isteam/ip/eee12f83-05b7-4457-b0a0-54f680d994c4/Two%20Seeds.webp/:/rs=w:1280",
     "content": "<p>Two seeds lay side by side in the soil.</p>\n<p>The first seed said,<br>“I will grow. I will push my roots deep into the earth and reach for the sun.”</p>\n<p>The second seed said,<br>“What if the soil is hard? What if the sun burns me?”</p>\n<p>So it waited.</p>\n<p>Spring arrived.<br>The first seed became a flower. The second seed was eaten by a bird.</p>\n<p>Fear doesn’t just delay dreams. It destroys them.</p>\n<p>We often believe we’re being “safe” when we wait.<br>But life doesn’t reward hesitation. The difference between a life that blossoms and one that disappears quietly is often just one decision: To grow despite the fear.</p>\n<p>There’s a quote I’ve fallen in love with “The magic you’re looking for is in the work you are avoiding.”</p>\n<p>So, face your fears and make the rest of your life to be the best of your life.</p>"
-  },
-  {
-    "slug": "test",
-    "title": "Test",
-    "date": "19 June 2026",
-    "categories": [
-      "happiness"
-    ],
-    "excerpt": "Test",
-    "thumb": "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781867180649-frnd2.png",
-    "hero": "https://raw.githubusercontent.com/Biege-Daemon/Get-Inspired/main/uploads/1781867180649-frnd2.png",
-    "content": "Test"
   }
 ];
 
@@ -48,8 +36,8 @@ function getCategoryLabel(cats){
 }
 function renderBlogCards(container,posts){
   container.innerHTML=posts.map(function(post){
-return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+'">'
-  +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
+    return '<a href="blog-post.html?slug='+post.slug+'" class="blog-card" data-categories="'+post.categories.join(' ')+">"'
+      +'<div class="blog-card-img" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-card-body">'
       +'<div class="blog-meta"><span>'+post.date+'</span><span class="pipe">|</span><span>'+getCategoryLabel(post.categories)+'</span></div>'
       +'<h4>'+post.title+'</h4>'
@@ -62,7 +50,7 @@ function renderBlogRows(container,posts){
   var html='';
   posts.forEach(function(post,i){
     if(i>0)html+='<hr class="blog-post-divider">';
-    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+'">'
+    html+='<a href="blog-post.html?slug='+post.slug+'" class="blog-post" data-cats="'+post.categories.join(' ')+">"'
       +'<div class="blog-post-row">'
       +'<div class="blog-thumb" style="background-image:url(\''+post.thumb+'\');"></div>'
       +'<div class="blog-post-text">'
